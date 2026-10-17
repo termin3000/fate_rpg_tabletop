@@ -1,0 +1,12 @@
+{
+  "name": "fate-rpg-signaling",
+  "version": "1.0.0",
+  "description": "WebSocket signaling server for Fate RPG VTT P2P connections",
+  "scripts": {
+    "start": "bun run index.ts",
+    "dev": "bun --watch run index.ts"
+  },
+  "dependencies": {
+    "socket.io": "^4.7.0"
+  }
+}

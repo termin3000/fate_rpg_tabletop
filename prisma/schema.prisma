@@ -1,0 +1,154 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Adventure {
+  id             String     @id @default(cuid())
+  name           String     @default("Новое приключение")
+  currentSceneId String?
+  settings       String     @default("{\"baseSkills\":[],\"initiative\":{\"physical\":{\"primary\":\"\",\"secondary\":\"\",\"tertiary\":\"\"},\"mental\":{\"primary\":\"\",\"secondary\":\"\",\"tertiary\":\"\"}},\"modules\":{\"magic\":false}}")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  characters     Character[]
+  scenes         Scene[]
+  logEntries     LogEntry[]
+  items          Item[]
+  folders        Folder[]
+  notes          Note[]
+}
+
+model Character {
+  id                String    @id @default(cuid())
+  name              String
+  type              String    @default("npc")
+  concept           String    @default("")
+  problem           String    @default("")
+  aspects           String    @default("[]")
+  skills            String    @default("[]")
+  stunts            String    @default("[]")
+  stressTracks      String    @default("[]")
+  consequences      String    @default("[]")
+  situationalAspects String   @default("[]")
+  fatePoints        Int       @default(3)
+  refresh           Int       @default(3)
+  isActive          Boolean   @default(false)
+  hiddenFromPlayers Boolean   @default(false)
+  folderId          String?
+  isHorde           Boolean   @default(false)
+  members           String    @default("[]")
+  crowdEligible     Boolean   @default(false)
+  crowdComposition  String    @default("{}")
+  aspectSources     String    @default("[]")
+  temporary         Boolean   @default(false)
+  isMage            Boolean   @default(false)
+  avatar            String?
+  avatarColor       String    @default("")
+  adventureId       String
+  adventure         Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Scene {
+  id               String    @id @default(cuid())
+  name             String    @default("Новая сцена")
+  adventureId      String
+  adventure        Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
+  currentFloorIndex Int      @default(0)
+  playerFloorIndex Int       @default(0)
+  floors           String    @default("[]")
+  presentCharacters String   @default("[]")
+  conflictData     String?
+  items            String    @default("[]")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model LogEntry {
+  id                String    @id @default(cuid())
+  adventureId       String
+  adventure         Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
+  characterId       String?
+  characterName     String    @default("")
+  skillName         String    @default("")
+  diceResults       String    @default("[]")
+  bonus             Int       @default(0)
+  total             Int       @default(0)
+  opponentTotal     Int?
+  difficulty        Int?
+  result            String    @default("")
+  opponentType      String?
+  opponentCharacterId String?
+  opponentName      String?
+  opponentSkillName String?
+  opponentDiceResults String  @default("[]")
+  opponentBonus     Int       @default(0)
+  extraBonus        Int       @default(0)
+  extraBonusReason  String    @default("")
+  rerolled          Boolean   @default(false)
+  customText        String?
+  isRiftEvent       Boolean   @default(false)
+  // ── New rich-tooltip fields (backward compatible — all optional/defaulted) ──
+  skillValue        Int?
+  manualBonus       Int       @default(0)
+  helpers           String    @default("[]")   // JSON array of RollHelper
+  aspectInvokeBonus Int       @default(0)
+  aspectInvokeReason String   @default("")
+  aspectRerolled    Boolean   @default(false)
+  // ── Opponent rich-tooltip fields ──
+  opponentSkillValue Int?     // Raw opponent skill value (e.g. +3 for Contacts +3)
+  opponentManualBonus Int     @default(0) // Manual bonus the opponent added in dialog
+  opponentHelpers   String    @default("[]")   // JSON array of RollHelper (defender crowd)
+  // ── Magic module fields (destructive magic card draw) ──
+  isMagicRoll       Boolean   @default(false)  // true for magic card draws
+  magicCastType     String?                    // 'normal' | 'dangerous'
+  magicCardName     String?                    // Drawn card name
+  magicEffect       String?                    // Full effect text of the card
+  magicZoneStress   Int?                       // Zone stress delta from the card (-2..+2)
+  magicZoneName     String?                    // Name of the zone where stress was applied
+  magicZoneLevelAfter Int?                     // Zone rift level after the cast (0..3)
+  // ── Unified mass roll: structured results of all participants (JSON array) ──
+  // Each entry: { characterId, characterName, skillName, skillValue, dice, bonus, total, resultLabel }
+  groupRollResults String @default("[]")
+  createdAt         DateTime  @default(now())
+}
+
+model Item {
+  id          String    @id @default(cuid())
+  name        String
+  type        String    @default("item")
+  description String    @default("")
+  text        String?
+  adventureId String
+  adventure   Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
+  sceneId     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Folder {
+  id          String    @id @default(cuid())
+  name        String
+  adventureId String
+  adventure   Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+}
+
+model Note {
+  id          String    @id @default(cuid())
+  title       String
+  content     String    @default("")
+  category    String    @default("session") // session | lore | npc | quest | handout
+  pinned      Boolean   @default(false)
+  color       String    @default("default") // default | orange | green | blue | purple | red
+  adventureId String
+  adventure   Adventure @relation(fields: [adventureId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

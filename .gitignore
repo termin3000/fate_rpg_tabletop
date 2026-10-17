@@ -1,0 +1,37 @@
+# Dependencies and generated production artifacts
+node_modules/
+.next/
+.tools/
+mini-services/*/dist/
+/dist/
+/build/
+/out/
+coverage/
+playwright-report/
+test-results/
+.turbo/
+.vercel/
+prisma-client-backup/
+*.exe
+*.tsbuildinfo
+next-env.d.ts
+
+# Local configuration and user game data
+.env
+.env.*
+!.env.example
+db/*.db
+db/*.db-*
+db/*.sqlite*
+/backups/
+/upload/
+/uploads/
+
+# Runtime and editor files
+logs/
+*.log
+.cache/
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store

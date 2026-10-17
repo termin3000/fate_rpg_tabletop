@@ -1,0 +1,5162 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Fate RPG Custom Animations */
+  --animate-fade-in: fate-fade-in 0.3s ease-out;
+  --animate-slide-up: fate-slide-up 0.3s ease-out;
+  --animate-slide-down: fate-slide-down 0.25s ease-out;
+  --animate-scale-in: fate-scale-in 0.25s ease-out;
+  --animate-dice-roll: fate-dice-roll 0.6s ease-out;
+  --animate-pulse-glow: fate-pulse-glow 2s ease-in-out infinite;
+  --animate-shimmer: fate-shimmer 2s linear infinite;
+  --animate-float: fate-float 3s ease-in-out infinite;
+  --animate-fade-in-up: fate-fade-in-up 0.4s ease-out;
+  --animate-slide-in-right: fate-slide-in-right 0.35s ease-out;
+  --animate-bounce-in: fate-bounce-soft 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-shimmer-bg: fate-shimmer-bg 2.5s linear infinite;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Fate RPG Custom Theme
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --fate-header-bg: #2c3e50;
+  --fate-header-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+  --fate-accent: #e67e22;
+  --fate-accent-dark: #d35400;
+  --fate-accent-light: #f39c12;
+  --fate-accent-glow: rgba(230, 126, 34, 0.4);
+  --fate-bg: #faf8f6;
+  --fate-bg-warm: #f0ebe4;
+  --fate-bg-card: #ffffff;
+  --fate-success: #27ae60;
+  --fate-success-dark: #1e8449;
+  --fate-danger: #e74c3c;
+  --fate-danger-dark: #c0392b;
+  --fate-text: #2c2c2c;
+  --fate-text-muted: #7f8c8d;
+  --fate-border: #e8e2da;
+  --fate-shadow: rgba(44, 62, 80, 0.08);
+  --fate-shadow-md: rgba(44, 62, 80, 0.12);
+}
+
+/* ── Dark Theme Overrides ─────────────────────────────────── */
+.dark {
+  --fate-header-bg: #1a2530;
+  --fate-header-gradient: linear-gradient(135deg, #1a2530 0%, #243341 50%, #1a2530 100%);
+  --fate-accent: #f39c12;
+  --fate-accent-dark: #e67e22;
+  --fate-accent-light: #ffb74d;
+  --fate-accent-glow: rgba(243, 156, 18, 0.5);
+  --fate-bg: #1a1d23;
+  --fate-bg-warm: #20242c;
+  --fate-bg-card: #262b34;
+  --fate-success: #2ecc71;
+  --fate-success-dark: #27ae60;
+  --fate-danger: #e74c3c;
+  --fate-danger-dark: #c0392b;
+  --fate-text: #e8eaed;
+  --fate-text-muted: #9aa0a6;
+  --fate-border: #2d333b;
+  --fate-shadow: rgba(0, 0, 0, 0.3);
+  --fate-shadow-md: rgba(0, 0, 0, 0.45);
+}
+
+.dark body {
+  background-color: var(--fate-bg);
+  color: var(--fate-text);
+}
+
+/* ── Keyframe Animations ───────────────────────────────────── */
+@keyframes fate-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fate-tooltip-fade-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fate-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fate-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fate-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fate-dice-roll {
+  0% { transform: scale(1); }
+  15% { transform: scale(0.6) rotate(-8deg); }
+  30% { transform: scale(1.2) rotate(5deg); }
+  50% { transform: scale(0.85) rotate(-3deg); }
+  70% { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes fate-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--fate-accent-glow); }
+  50% { box-shadow: 0 0 12px 4px var(--fate-accent-glow); }
+}
+
+/* ── Invite pulse — for roll button when a mass-roll invite is pending ── */
+/* Dramatic attention-grabbing animation: scaling glow ring + brightness shift */
+@keyframes fate-invite-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7), 0 0 0 0 rgba(231, 76, 60, 0.4);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(231, 76, 60, 0.0), 0 0 14px 3px rgba(231, 76, 60, 0.55);
+    filter: brightness(1.15);
+  }
+}
+.fate-invite-pulse {
+  animation: fate-invite-pulse 1.1s ease-in-out infinite;
+  position: relative;
+}
+.fate-invite-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 2px solid #e74c3c;
+  opacity: 0;
+  animation: fate-invite-ring 1.1s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes fate-invite-ring {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.18); }
+}
+/* Small attention badge dot for the roll button */
+.fate-invite-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: #e74c3c;
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  animation: fate-invite-pulse 1.1s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes fate-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fate-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fate-reveal {
+  0% { opacity: 0; transform: scale(0.3) rotate(-10deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes fate-result-glow {
+  0% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 20px currentColor; }
+  100% { text-shadow: 0 0 0 transparent; }
+}
+
+@keyframes fate-border-pulse {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--fate-accent); }
+}
+
+/* ── Custom Scrollbar (refined) ───────────────────────────── */
+/* Targets native scrollbar on .fate-scroll containers */
+.fate-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.fate-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+.fate-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--fate-text-muted) 35%, transparent);
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  transition: background 0.2s ease;
+}
+.fate-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--fate-accent);
+}
+.fate-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fate-text-muted) 35%, transparent) transparent;
+}
+
+/* Targets Radix ScrollArea scrollbar (used by shadcn ScrollArea). */
+.fate-scroll [data-slot="scroll-area-scrollbar"] {
+  width: 6px !important;
+  height: 6px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+.fate-scroll [data-slot="scroll-area-scrollbar"][data-orientation="horizontal"] {
+  width: auto !important;
+  height: 6px !important;
+}
+.fate-scroll [data-slot="scroll-area-thumb"] {
+  background: color-mix(in srgb, var(--fate-text-muted) 35%, transparent);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+  width: 100% !important;
+}
+.fate-scroll [data-slot="scroll-area-scrollbar"]:hover [data-slot="scroll-area-thumb"],
+.fate-scroll [data-slot="scroll-area-thumb"]:hover {
+  background: var(--fate-accent);
+}
+.fate-scroll [data-slot="scroll-area-viewport"] {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fate-text-muted) 35%, transparent) transparent;
+}
+
+/* ── Fate Background Texture ──────────────────────────────── */
+.fate-bg-texture {
+  background-color: var(--fate-bg);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(230, 126, 34, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(44, 62, 80, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(230, 126, 34, 0.02) 0%, transparent 50%);
+}
+
+/* ── Fate Card Styles ─────────────────────────────────────── */
+.fate-card {
+  background: var(--fate-bg-card);
+  border: 1px solid var(--fate-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px var(--fate-shadow);
+  transition: all 0.2s ease;
+}
+
+.fate-card:hover {
+  box-shadow: 0 4px 12px var(--fate-shadow-md);
+  transform: translateY(-1px);
+}
+
+.fate-card-static {
+  background: var(--fate-bg-card);
+  border: 1px solid var(--fate-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px var(--fate-shadow);
+}
+
+/* ── Fate List Item ───────────────────────────────────────── */
+.fate-list-item {
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.fate-list-item:hover {
+  background-color: color-mix(in srgb, var(--fate-text) 5%, transparent);
+  box-shadow: 0 2px 8px var(--fate-shadow);
+  transform: translateX(2px);
+}
+
+/* ── Fate Accent Button ───────────────────────────────────── */
+.fate-btn-accent {
+  position: relative;
+  background-color: var(--fate-accent);
+  color: white;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Diagonal light sweep on hover */
+.fate-btn-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: -1;
+}
+
+.fate-btn-accent:hover {
+  background-color: var(--fate-accent-dark);
+  box-shadow: 0 2px 8px var(--fate-accent-glow);
+  transform: translateY(-1px);
+}
+
+.fate-btn-accent:hover::before {
+  opacity: 1;
+  animation: fate-btn-sweep 0.9s ease-out;
+}
+
+.fate-btn-accent:active {
+  background-color: var(--fate-accent-dark);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+@keyframes fate-btn-sweep {
+  from { background-position: 150% 0; }
+  to { background-position: -150% 0; }
+}
+
+/* ── Outline Button Accent Tint on Hover ──────────────────── */
+/* Targets shadcn buttons with variant="outline" (border + bg-background) */
+button[data-slot="button"].border.bg-background:hover {
+  background-color: rgba(230, 126, 34, 0.08) !important;
+  border-color: color-mix(in srgb, var(--fate-accent) 45%, transparent) !important;
+  color: var(--fate-accent-dark) !important;
+}
+.dark button[data-slot="button"].border.bg-background:hover {
+  background-color: rgba(243, 156, 18, 0.12) !important;
+  color: var(--fate-accent-light) !important;
+}
+
+/* ── Fate Ghost Button ────────────────────────────────────── */
+.fate-btn-ghost {
+  transition: all 0.15s ease;
+}
+
+.fate-btn-ghost:hover {
+  transform: scale(1.05);
+}
+
+.fate-btn-ghost:active {
+  transform: scale(0.95);
+}
+
+/* ── Fate Glass Effect ────────────────────────────────────── */
+.fate-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ── Fate Section Header ──────────────────────────────────── */
+.fate-section-header {
+  border-bottom: 1px solid var(--fate-border);
+  background: linear-gradient(to right, color-mix(in srgb, var(--fate-text) 3%, transparent), transparent);
+}
+
+/* ── Roll Button (ScenePanel header) ─────────────────────── */
+.fate-roll-button {
+  position: relative;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.fate-roll-button:hover {
+  background: rgba(230, 126, 34, 0.1) !important;
+  border-color: rgba(230, 126, 34, 0.3);
+  box-shadow: 0 0 12px rgba(230, 126, 34, 0.15);
+}
+.fate-roll-button:active {
+  transform: scale(0.96);
+}
+
+/* ── Fate Accent Line Glow ────────────────────────────────── */
+.fate-accent-line {
+  box-shadow: 0 2px 8px var(--fate-accent-glow), 0 1px 3px var(--fate-accent-glow);
+}
+
+/* ── Dice Result Reveal ───────────────────────────────────── */
+.fate-dice-reveal {
+  animation: fate-reveal 0.5s ease-out;
+}
+
+.fate-result-glow {
+  animation: fate-result-glow 1.5s ease-out;
+}
+
+/* ── Dialog Overlay Enhancement ───────────────────────────── */
+.fate-dialog-overlay {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(44, 62, 80, 0.4);
+  transition: opacity 0.3s ease;
+}
+
+/* ── Map Grid Dots ────────────────────────────────────────── */
+.fate-map-grid {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Map Vignette ─────────────────────────────────────────── */
+.fate-map-vignette {
+  box-shadow: inset 0 0 80px rgba(44, 62, 80, 0.08);
+}
+
+/* ── Section Icon Circle ──────────────────────────────────── */
+.fate-icon-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Pin dialog: icon picker grid ─────────────────────────── */
+.fate-pin-icon-grid {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.fate-pin-icon-btn {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--fate-border);
+  border-radius: 8px;
+  background-color: var(--fate-bg);
+  cursor: pointer;
+  transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+  padding: 0;
+}
+
+.fate-pin-icon-btn:hover {
+  transform: translateY(-1px) scale(1.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.fate-pin-icon-btn:active {
+  transform: scale(0.96);
+}
+
+.fate-pin-preview-badge {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  animation: fate-pin-pop 0.25s ease-out;
+}
+
+@keyframes fate-pin-pop {
+  0% { transform: scale(0.85); }
+  60% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* ── Alternating Row ──────────────────────────────────────── */
+.fate-row-even {
+  background-color: rgba(240, 235, 228, 0.3);
+}
+
+.fate-row-odd {
+  background-color: transparent;
+}
+
+/* ── Character Add/Remove Animation ───────────────────────── */
+.fate-char-enter {
+  animation: fate-slide-up 0.3s ease-out;
+}
+
+.fate-char-exit {
+  animation: fate-fade-in 0.2s ease-out reverse;
+}
+
+/* ── New keyframe animations (Round 7 enhancements) ──────── */
+@keyframes fate-confetti-fall {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fate-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
+@keyframes fate-slide-in-left {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fate-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--fate-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 24px 6px var(--fate-accent-glow);
+  }
+}
+
+@keyframes fate-bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  60% { transform: translateY(-3px); }
+}
+
+@keyframes fate-sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes fate-pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes fate-number-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fate-timer-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.4); }
+}
+
+@keyframes fate-timer-warning {
+  0%, 100% { box-shadow: 0 0 12px rgba(231, 76, 60, 0.4); }
+  50% { box-shadow: 0 0 22px rgba(231, 76, 60, 0.75); }
+}
+
+/* ── Animation utility classes ───────────────────────────── */
+.fate-shake {
+  animation: fate-shake 0.5s ease-in-out;
+}
+
+.fate-log-enter {
+  animation: fate-slide-in-left 0.35s ease-out;
+}
+
+.fate-glow-pulse {
+  animation: fate-glow-pulse 1.8s ease-in-out infinite;
+}
+
+.fate-bounce-soft {
+  animation: fate-bounce-soft 0.6s ease-out;
+}
+
+.fate-number-pop {
+  animation: fate-number-pop 0.5s ease-out;
+}
+
+/* ── Confetti container — used by great-success overlay ──── */
+.fate-confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.fate-confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -20px;
+  animation: fate-confetti-fall linear forwards;
+}
+
+/* ── Roll Stage Overlay (theatrical mode) ──────────────────── */
+/* Full-screen overlay that plays an animated dice-roll sequence on top of
+   the entire UI. Shown when store.liveRollStage is non-null AND
+   store.theatricalMode is true. Visible to the roller + all peers (via
+   the `roll:stage` broadcast in use-network.ts). */
+
+/* ── Inline overlay (rendered inside LogPanel) ──
+   The overlay is now a child of the LogPanel root container, positioned
+   absolutely to cover the entire panel (header + list). This makes it
+   seamless: same container, same width, same border radius — the roll
+   stage simply "takes over" the log area for the duration of the
+   animation, then hands back control (with the new entry already in
+   the log). No more separate docked panel. */
+.fate-stage-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  /* ПРОЗРАЧНЫЙ фон: кубики рендерятся прямо на карте.
+     pointer-events: none — карта под оверлеем остаётся интерактивной
+     (можно двигать токены, рисовать и т.д. во время броска).
+     pointer-events: auto включается только у плавающей карточки. */
+  background: transparent;
+  pointer-events: none;
+  color: #fff;
+  animation: fate-stage-fade-in 0.2s ease-out;
+}
+
+@keyframes fate-stage-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fate-stage-overlay--exit {
+  animation: fate-stage-fade-out 0.45s ease-in forwards;
+}
+@keyframes fate-stage-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Backdrop element no longer used. */
+.fate-stage-overlay__backdrop {
+  display: none;
+}
+
+/* ── Плавающая информационная карточка (правый верхний угол карты) ──
+   Компактная, кликабельная (pointer-events: auto), не перекрывает кубики.
+   Размер уменьшен: пользователь жаловался на «несоразмерно большие окна».
+   Для простых проверок CompactDiceReadout (внизу) уже показывает кубики+
+   сумму+итог, поэтому здесь только контекст+вердикт. */
+.fate-stage-floating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  pointer-events: auto;
+  width: 248px;
+  max-width: calc(100% - 20px);
+  max-height: calc(100% - 20px);
+  overflow-y: auto;
+  overflow-x: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 9px 11px;
+  border-radius: 10px;
+  /* Полупрозрачный тёмный фон — читаемый на любой карте */
+  background: rgba(20, 23, 28, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  animation: fate-stage-card-slide-in 0.25s ease-out;
+}
+
+@keyframes fate-stage-card-slide-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.fate-stage-floating--exit {
+  animation: fate-stage-card-slide-out 0.4s ease-in forwards;
+}
+@keyframes fate-stage-card-slide-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(20px); }
+}
+
+/* На мобильных — карточка шире, почти на весь экран */
+@media (max-width: 640px) {
+  .fate-stage-floating {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* ── Dice Case — 3D кейс с кубиками (внизу блока со сценой) ──
+   Кейс стилизован как настоящий стол с кубиками: кожаная подложка,
+   прозрачное стекло сверху, внутри лежат 4 CSS 3D кубика с символами
+   последнего броска (+ + + −). При броске кубики исчезают (scale→0),
+   при возврате — появляются с результатом. */
+
+.fate-dice-case {
+  position: relative;
+  flex-shrink: 0 !important;
+  z-index: 3;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 10px 8px;
+  margin: 8px 8px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(28, 32, 40, 0.94) 0%, rgba(18, 21, 27, 0.94) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  cursor: default;
+  transition: all 0.25s ease;
+  color: #fff;
+}
+
+.fate-dice-case:not(:disabled) {
+  cursor: pointer;
+}
+
+.fate-dice-case:hover:not(:disabled) {
+  border-color: rgba(25, 118, 210, 0.55);
+  transform: translateY(-1px);
+}
+
+.fate-dice-case--active {
+  border-color: rgba(25, 118, 210, 0.75);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.45),
+    0 0 0 2px rgba(25, 118, 210, 0.28),
+    0 0 22px rgba(25, 118, 210, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: fate-dice-case-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes fate-dice-case-pulse {
+  0%, 100% {
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.45),
+      0 0 0 2px rgba(25, 118, 210, 0.28),
+      0 0 22px rgba(25, 118, 210, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.45),
+      0 0 0 3px rgba(25, 118, 210, 0.48),
+      0 0 32px rgba(25, 118, 210, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+.fate-dice-case--exiting {
+  opacity: 0.55;
+}
+
+/* ── Поднос кейса: здесь лежат 3D кубики (Three.js Canvas) ── */
+.fate-dice-case__tray {
+  position: relative;
+  width: 190px;
+  height: 74px;
+  border-radius: 10px;
+  /* Тёмная фетровая подложка стола — видна по краям вокруг Canvas */
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(80, 60, 38, 0.45) 0%, rgba(34, 24, 16, 0.6) 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(50, 36, 22, 0.5) 0%, transparent 50%),
+    linear-gradient(180deg, #2a2018 0%, #1a130d 100%);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.65),
+    inset 0 -1px 0 rgba(255, 200, 150, 0.08),
+    inset 0 0 0 1px rgba(255, 220, 180, 0.04);
+  overflow: hidden;
+  display: block;
+  /* Внутренний padding оставляет «рамку» подноса вокруг Canvas */
+  padding: 3px;
+}
+
+/* Блик "стекла" сверху кейса */
+.fate-dice-case__glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    transparent 60%
+  );
+  border-radius: 10px;
+}
+
+/* ── 3D Canvas с кубиками (Three.js) ──
+   Контейнер для DiceCase3D — настоящего Three.js Canvas с 4
+   физическими 3D кубиками, лежащими на подносе кейса сверху-вниз.
+   Canvas заполняет весь tray-inner, кубики рендерятся внутри. */
+
+.fate-dice-case__tray-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 68px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+/* Когда бросок идёт — Canvas затемняется (кубы «улетают» на карту).
+   Сам Canvas продолжает рендерить, но кубы внутри уже scale=0. */
+.fate-dice-case--empty .fate-dice-case__tray-inner {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+/* Когда кейс exiting (возврат) — Canvas чуть приглушён */
+.fate-dice-case--exiting .fate-dice-case__tray-inner {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.fate-dice-case__label {
+  font-size: 10px;
+  line-height: 1;
+  min-height: 12px;
+  text-align: center;
+}
+
+.fate-dice-case__label-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.fate-dice-case__label-text--accent {
+  color: #64b5f6;
+  font-weight: 600;
+}
+
+/* In inline mode the "card" is just the content layer of the overlay
+   (no separate card background/border — the overlay itself IS the
+   panel). It scrolls internally if content is too tall. */
+.fate-stage-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+  transform-style: preserve-3d;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fate-stage-card-in 0.25s ease-out;
+}
+
+@keyframes fate-stage-card-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fate-stage-card--exit {
+  animation: fate-stage-card-out 0.2s ease-in forwards;
+}
+@keyframes fate-stage-card-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Header */
+.fate-stage-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+/* Left side: title + roller pill stacked */
+.fate-stage-card__header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+/* Right side: queue badge + close button */
+.fate-stage-card__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Explicit close (✕) button — discoverable dismiss since clicks on the
+   card body no longer close the overlay. */
+.fate-stage-card__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+.fate-stage-card__close:hover {
+  background: rgba(231, 76, 60, 0.18);
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(231, 76, 60, 0.45);
+}
+.fate-stage-card__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.01em;
+}
+.fate-stage-card__roller {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.fate-stage-card__roller-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.fate-stage-card__roller-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+.fate-stage-card__queue {
+  font-size: 0.75rem;
+  color: rgba(243, 156, 18, 0.9);
+  background: rgba(243, 156, 18, 0.12);
+  border: 1px solid rgba(243, 156, 18, 0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+/* Body layout variations */
+.fate-stage-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* preserve-3d чтобы 3D-кубики не обрезались */
+  transform-style: preserve-3d;
+}
+.fate-stage-body__participants {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+/* Opposed: stacked vertically (roller → VS → opponent). The right-docked
+   panel is narrow (~440px), so a 3-column grid would be too cramped. */
+.fate-stage-body__opposed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+.fate-stage-body__mass {
+  display: grid;
+  gap: 12px;
+}
+.fate-stage-body__mass--mass {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.fate-stage-body__mass--mass-damage {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* VS separator */
+.fate-stage-vs {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(231, 76, 60, 0.85);
+  text-shadow: 0 0 18px rgba(231, 76, 60, 0.5);
+  animation: fate-stage-vs-pulse 1.4s ease-in-out infinite;
+}
+@keyframes fate-stage-vs-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+/* Difficulty box (for simple check vs static difficulty) */
+.fate-stage-difficulty {
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(52, 152, 219, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.35);
+}
+.fate-stage-difficulty__label {
+  font-size: 0.75rem;
+  color: rgba(52, 152, 219, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.fate-stage-difficulty__value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Participant card */
+.fate-stage-participant {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  animation: fate-stage-participant-in 0.4s ease-out both;
+}
+@keyframes fate-stage-participant-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.fate-stage-participant__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+.fate-stage-participant__name {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.98);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.fate-stage-crown {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 6px rgba(241, 196, 15, 0.7));
+  animation: fate-stage-crown-bob 1.2s ease-in-out infinite;
+}
+@keyframes fate-stage-crown-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+.fate-stage-participant__skill {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 500;
+}
+.fate-stage-participant__skill-val {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.fate-stage-participant__dice {
+  min-height: 240px;
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Give the dice "table surface" — subtle floor gradient under the dice
+     so the drop + roll animation reads as "dice landing on a table". */
+  position: relative;
+  padding-bottom: 14px;
+  /* preserve-3d чтобы 3D-кубик не обрезался */
+  transform-style: preserve-3d;
+}
+/* Floor shadow line under the dice — gives weight to the landing. */
+.fate-stage-participant__dice::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 6px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.12) 50%,
+    transparent 80%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.fate-stage-participant__dice--landed::after {
+  opacity: 1;
+}
+
+/* ── 3D кубики: Three.js (основной) + SVG (fallback) ──────────
+   ОСНОВНОЙ рендер — Three.js канвас (.fate-stage-dice-3d-canvas):
+   реальная 3D-геометрия BoxGeometry, кувыркание в 3D, контактные
+   тени, environment-освещение для пластикового блеска.
+   FALLBACK — inline SVG (если WebGL недоступен): изометрическая
+   проекция с 3 видимыми полигонами. */
+.fate-stage-dice-row {
+  display: inline-flex;
+  gap: 22px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 26px 18px 30px;
+  min-height: 120px;
+  position: relative;
+}
+
+/* 3D-канвас: заполняет dice-row.
+   Высота 240px — больше места для 3D-кубиков, чтобы символы на гранях
+   были читаемы. Кубики расставлены шире (по индексу), плюс им нужна
+   вертикаль для drop-параболы и bounce. */
+.fate-stage-dice-row--3d {
+  display: block;
+  width: 100% !important;
+  align-self: stretch !important;
+  flex: 1 1 auto;
+  min-height: 240px;
+  padding: 0;
+}
+.fate-stage-dice-3d-canvas {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  min-height: 240px;
+}
+.dice-3d-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* opacity:0 по умолчанию (НЕВИДИМ). CanvasMapSync ставит inline
+     opacity:1 ПОСЛЕ позиционирования wrapper'а по screen-прямоугольнику
+     карты. Пока opacity:0 — кубы НЕ видны в неправильной позиции
+     (wrapper = весь viewport). Это фикс бага "кубы вылезают из-за правой
+     части карты": раньше wrapper был виден сразу, пока useFrame не
+     перемещал его на карту. inline opacity (от CanvasMapSync) приоритетнее
+     этого CSS-правила → не конфликтует. React не трогает opacity (его нет
+     в wrapperStyle) → не сбрасывает при ре-рендере. */
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+}
+.fate-stage-dice-3d-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* SVG fallback: скрыт по умолчанию. Показывается только если канвас
+   не смонтировался (WebGL недоступен). Управляется через JS-класс
+   .fate-stage-dice-row--no-webgl на родителе. */
+.fate-stage-dice-svg-fallback {
+  display: none;
+}
+.fate-stage-dice-row--no-webgl .fate-stage-dice-svg-fallback {
+  display: inline-flex;
+  gap: 22px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 26px 18px 30px;
+}
+/* Если канвас есть — fallback скрыт (даже если JS-класс не успел сняться) */
+.fate-stage-dice-row--3d:has(.fate-stage-dice-3d-canvas canvas) .fate-stage-dice-svg-fallback {
+  display: none;
+}
+
+/* Wrapper: позиционирование (scatter X) + контактная тень.
+   Никакого preserve-3d / rotateX/Y — не нужно. */
+.fate-stage-die-wrap {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 68px;
+  /* Точка вращения — низ кубика (где он касается стола). */
+  transform-origin: center 75%;
+  /* Лёгкая Drop-shadow имитирует объёмное падение на стол. */
+  filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.45));
+  will-change: transform, opacity;
+}
+
+/* SVG заполняет wrapper целиком */
+.fate-stage-die-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* REVEAL FLASH: когда кубик «приземляется» (settle), он меняется с
+   нейтрально-серого на цветной. Добавляем короткую яркую вспышку
+   чтобы момент «раскрашивания» читался как reveal результата. */
+.fate-stage-die-wrap.fate-stage-die--settling .fate-stage-die-svg {
+  animation: fate-die-reveal 0.4s ease-out both;
+}
+@keyframes fate-die-reveal {
+  0%   { filter: brightness(1) saturate(0); }
+  30%  { filter: brightness(1.6) saturate(1.4); }
+  100% { filter: brightness(1) saturate(1); }
+}
+
+/* ── Contact тень под кубиком (на "столе") ── */
+.fate-stage-die-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 9px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.25) 50%, transparent 80%);
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(3px);
+}
+
+/* ── DROP: кубик падает сверху с 2D-вращением, 2 отскока ──
+   Вращение по Z (rotate) создаёт визуальный «тумблинг» — SVG-кубик
+   крутится как монетка, но благодаря изометрической геометрии всё
+   равно читается как объёмный куб. */
+.fate-stage-die-wrap.fate-stage-die--dropping {
+  animation: fate-die-drop 0.7s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+}
+@keyframes fate-die-drop {
+  0% {
+    transform: translateX(var(--scatter-x, 0)) translateY(-240px) rotate(-180deg) scale(0.65);
+    opacity: 0;
+  }
+  12% { opacity: 1; }
+  55% {
+    transform: translateX(var(--scatter-x, 0)) translateY(12px) rotate(15deg) scale(1.06);
+  }
+  72% {
+    transform: translateX(var(--scatter-x, 0)) translateY(-22px) rotate(-12deg) scale(0.95);
+  }
+  86% {
+    transform: translateX(var(--scatter-x, 0)) translateY(5px) rotate(6deg) scale(1.02);
+  }
+  100% {
+    transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(var(--tilt-y, 0deg)) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ROLL: покачивание на месте — кубик «катается» по столу */
+.fate-stage-die-wrap.fate-stage-die--rolling {
+  animation: fate-die-roll 0.6s ease-in-out both;
+}
+@keyframes fate-die-roll {
+  0%   { transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(0deg) scale(1); }
+  20%  { transform: translateX(var(--scatter-x, 0)) translateY(-7px) rotate(-18deg) scale(0.96); }
+  40%  { transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(14deg) scale(1); }
+  60%  { transform: translateX(var(--scatter-x, 0)) translateY(-6px) rotate(-12deg) scale(0.96); }
+  80%  { transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(9deg) scale(1); }
+  100% { transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(var(--tilt-y, 0deg)) scale(1); }
+}
+
+/* SETTLE: финальный отскок + settles со случайным наклоном */
+.fate-stage-die-wrap.fate-stage-die--settling {
+  animation: fate-die-settle 0.35s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+}
+@keyframes fate-die-settle {
+  0%   { transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(0deg) scale(1); }
+  35%  { transform: translateX(var(--scatter-x, 0)) translateY(-9px) rotate(calc(var(--tilt-y, 0deg) * 0.5)) scale(1.06); }
+  65%  { transform: translateX(var(--scatter-x, 0)) translateY(2px) rotate(calc(var(--tilt-y, 0deg) * -0.25)) scale(0.97); }
+  100% { transform: translateX(var(--scatter-x, 0)) translateY(0) rotate(var(--tilt-y, 0deg)) scale(1); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fate-stage-die-wrap.fate-stage-die--dropping,
+  .fate-stage-die-wrap.fate-stage-die--rolling,
+  .fate-stage-die-wrap.fate-stage-die--settling {
+    animation: fate-stage-fade-in 0.2s ease-out both !important;
+  }
+}
+
+.fate-stage-participant__total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  animation: fate-number-pop 0.5s ease-out both;
+}
+.fate-stage-participant__total-num {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+.fate-stage-participant__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.fate-stage-participant__damage {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.35);
+  animation: fate-stage-damage-flash 0.4s ease-out;
+}
+@keyframes fate-stage-damage-flash {
+  0%   { transform: scale(0.7); opacity: 0; }
+  60%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.fate-stage-participant__bonus-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(243, 156, 18, 0.18);
+  color: rgba(243, 156, 18, 0.95);
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  animation: fate-stage-tag-pop 0.4s ease-out both;
+}
+.fate-stage-participant__bonus-tag--free {
+  top: 32px;
+  background: rgba(39, 174, 96, 0.18);
+  color: rgba(39, 174, 96, 0.95);
+  border-color: rgba(39, 174, 96, 0.4);
+}
+.fate-stage-participant__bonus-tag--reroll {
+  top: 56px;
+  background: rgba(127, 140, 141, 0.18);
+  color: rgba(127, 140, 141, 0.95);
+  border-color: rgba(127, 140, 141, 0.4);
+}
+@keyframes fate-stage-tag-pop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Informativeness: new layout elements ─────────────────── */
+
+/* Action context label (⚔ Атака / 🛡️ Защита / ✓ Проверка / ↑ Преодоление) */
+.fate-stage-card__context {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid currentColor;
+  width: fit-content;
+  opacity: 0.92;
+}
+
+/* Role badge (emoji in top-right corner of participant card) */
+.fate-stage-participant__role-badge {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 0.9rem;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+/* Modifier chips row — breakdown of bonuses (Бой +3, ситуативный +2, ...) */
+.fate-stage-participant__modifiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  animation: fate-stage-fade-in 0.3s ease-out both;
+}
+.fate-stage-modifier {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  line-height: 1.4;
+}
+.fate-stage-modifier--pos {
+  background: rgba(39, 174, 96, 0.1);
+  border-color: rgba(39, 174, 96, 0.3);
+}
+.fate-stage-modifier--neg {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: rgba(231, 76, 60, 0.3);
+}
+.fate-stage-modifier__label {
+  color: rgba(255, 255, 255, 0.75);
+}
+.fate-stage-modifier__value {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82rem;
+}
+.fate-stage-modifier--pos .fate-stage-modifier__value {
+  color: #2ecc71;
+}
+.fate-stage-modifier--neg .fate-stage-modifier__value {
+  color: #e74c3c;
+}
+
+/* Dice sum line ("кубики: +2") */
+.fate-stage-participant__dice-sum {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: 0.02em;
+  animation: fate-stage-fade-in 0.3s ease-out both;
+}
+.fate-stage-participant__dice-sum strong {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
+/* Margin line ("превышение +2" / "дефицит −1" / "вровень") */
+.fate-stage-participant__margin {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(127, 140, 141, 0.14);
+  color: rgba(127, 140, 141, 0.95);
+  border: 1px solid rgba(127, 140, 141, 0.35);
+  animation: fate-stage-tag-pop 0.4s ease-out both;
+}
+.fate-stage-participant__margin--pos {
+  background: rgba(39, 174, 96, 0.12);
+  color: #2ecc71;
+  border-color: rgba(39, 174, 96, 0.35);
+}
+.fate-stage-participant__margin--neg {
+  background: rgba(231, 76, 60, 0.12);
+  color: #e74c3c;
+  border-color: rgba(231, 76, 60, 0.35);
+}
+
+/* VS kind sub-label ("безымянный" / "персонаж") */
+.fate-stage-vs__kind {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+/* Verdict */
+.fate-stage-verdict {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  animation: fate-stage-verdict-in 0.5s ease-out both;
+}
+@keyframes fate-stage-verdict-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    letter-spacing: 0.2em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.02em;
+  }
+}
+.fate-stage-verdict__text {
+  text-shadow: 0 0 18px currentColor;
+}
+
+/* Footer: progress + skip hint */
+.fate-stage-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+.fate-stage-progress {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.fate-stage-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--fate-accent, #f39c12), var(--fate-accent-light, #f1c40f));
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+.fate-stage-skip-hint {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fate-stage-overlay,
+  .fate-stage-card,
+  .fate-stage-participant,
+  .fate-stage-verdict,
+  .fate-stage-vs,
+  .fate-stage-crown,
+  .fate-stage-participant__total,
+  .fate-stage-participant__damage,
+  .fate-stage-participant__bonus-tag {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Theatrical mode icon — gentle glow when enabled */
+.fate-theatrical-icon-on {
+  filter: drop-shadow(0 0 4px rgba(243, 156, 18, 0.6));
+  animation: fate-theatrical-glow 2.4s ease-in-out infinite;
+}
+@keyframes fate-theatrical-glow {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(243, 156, 18, 0.5)); }
+  50%      { filter: drop-shadow(0 0 7px rgba(243, 156, 18, 0.85)); }
+}
+
+/* Theatrical mode duration slider — custom styled range input */
+.fate-stage-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+}
+.fate-stage-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--fate-accent, #f39c12), var(--fate-accent-light, #f1c40f));
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.fate-stage-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.fate-stage-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--fate-accent, #f39c12), var(--fate-accent-light, #f1c40f));
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.fate-stage-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* ── Sparkle dots ─────────────────────────────────────────── */
+.fate-sparkle::before,
+.fate-sparkle::after {
+  content: '✦';
+  position: absolute;
+  font-size: 12px;
+  color: var(--fate-accent);
+  animation: fate-sparkle 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.fate-sparkle::before {
+  top: -4px;
+  right: -8px;
+}
+.fate-sparkle::after {
+  bottom: -4px;
+  left: -8px;
+  animation-delay: 0.8s;
+}
+
+/* ── Pulsing ring (for combat tokens, current participant) ─ */
+/* Three staggered expanding rings for a more dramatic effect */
+.fate-pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--fate-accent);
+  animation: fate-pulse-ring 1.5s ease-out infinite;
+  pointer-events: none;
+}
+.fate-pulse-ring::before,
+.fate-pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--fate-accent);
+  animation: fate-pulse-ring 1.5s ease-out infinite;
+  pointer-events: none;
+}
+.fate-pulse-ring::before {
+  animation-delay: 0.5s;
+  border-color: var(--fate-accent-light);
+}
+.fate-pulse-ring::after {
+  animation-delay: 1s;
+  border-color: var(--fate-accent);
+}
+
+/* ── Dark-mode adjustments for cards & list items ────────── */
+.dark .fate-card,
+.dark .fate-card-static {
+  background: var(--fate-bg-card);
+  border-color: var(--fate-border);
+}
+
+.dark .fate-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.dark .fate-row-even {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.dark .fate-row-odd {
+  background-color: transparent;
+}
+
+.dark .fate-section-header {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.04), transparent);
+}
+
+.dark .fate-glass {
+  background: rgba(38, 43, 52, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Dark mode adjustments for native inputs ─────────────── */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--fate-bg-card);
+  color: var(--fate-text);
+  border-color: var(--fate-border);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--fate-text-muted);
+  opacity: 0.6;
+}
+
+/* ── Smoother dialog transitions ─────────────────────────── */
+/* Refined open/close: scale + subtle Y offset + overlay fade
+   NOTE: Centering is handled by Tailwind translate-x/y-[-50%] (CSS `translate` property),
+   so these keyframes must NOT include translate(-50%, -50%) to avoid double-translation. */
+@keyframes fate-dialog-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(0) scale(1.04);
+  }
+  75% {
+    transform: translateY(0) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fate-dialog-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+  }
+}
+
+@keyframes fate-overlay-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fate-overlay-exit {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+[data-slot="dialog-overlay"][data-state="open"] {
+  animation: fate-overlay-enter 0.3s ease-out;
+}
+[data-slot="dialog-overlay"][data-state="closed"] {
+  animation: fate-overlay-exit 0.25s ease-in forwards;
+}
+[data-slot="dialog-content"][data-state="open"] {
+  animation: fate-dialog-enter 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+[data-slot="dialog-content"][data-state="closed"] {
+  animation: fate-dialog-exit 0.18s ease-in forwards;
+}
+
+/* Same pattern for AlertDialog and Sheet for consistency */
+[data-slot="alert-dialog-overlay"][data-state="open"],
+[data-slot="sheet-overlay"][data-state="open"] {
+  animation: fate-overlay-enter 0.3s ease-out;
+}
+[data-slot="alert-dialog-overlay"][data-state="closed"],
+[data-slot="sheet-overlay"][data-state="closed"] {
+  animation: fate-overlay-exit 0.25s ease-in forwards;
+}
+[data-slot="alert-dialog-content"][data-state="open"],
+[data-slot="sheet-content"][data-state="open"] {
+  animation: fate-dialog-enter 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+[data-slot="alert-dialog-content"][data-state="closed"],
+[data-slot="sheet-content"][data-state="closed"] {
+  animation: fate-dialog-exit 0.18s ease-in forwards;
+}
+
+/* ── Token context menu subtle backdrop ──────────────────── */
+.fate-context-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: transparent;
+}
+
+/* ── Staggered list animation helper ─────────────────────── */
+.fate-stagger > * {
+  animation: fate-slide-up 0.3s ease-out backwards;
+}
+.fate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.fate-stagger > *:nth-child(2) { animation-delay: 40ms; }
+.fate-stagger > *:nth-child(3) { animation-delay: 80ms; }
+.fate-stagger > *:nth-child(4) { animation-delay: 120ms; }
+.fate-stagger > *:nth-child(5) { animation-delay: 160ms; }
+.fate-stagger > *:nth-child(6) { animation-delay: 200ms; }
+.fate-stagger > *:nth-child(7) { animation-delay: 240ms; }
+.fate-stagger > *:nth-child(8) { animation-delay: 280ms; }
+
+/* ── Fate points badge micro-interaction ─────────────────── */
+.fate-fp-badge {
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.fate-fp-badge:hover {
+  background-color: rgba(230, 126, 34, 0.18) !important;
+  border-color: rgba(230, 126, 34, 0.35);
+}
+
+/* ── Subtle paper-like noise overlay for atmosphere ──────── */
+.fate-bg-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+/* ── Map toolbar dark-mode tweaks ────────────────────────── */
+.dark .bg-white\/70 {
+  background-color: rgba(38, 43, 52, 0.7) !important;
+}
+
+.dark .bg-white\/50 {
+  background-color: rgba(38, 43, 52, 0.5) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Task 10 — Styling Polish (micro-interactions & details)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Accessible focus-visible ring for all interactive elements ─ */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+[role="slider"]:focus-visible,
+[role="combobox"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[tabindex]:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--fate-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ── Loading shimmer (skeleton) ───────────────────────────── */
+.fate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--fate-bg-warm) 0%,
+    var(--fate-border) 50%,
+    var(--fate-bg-warm) 100%
+  );
+  background-size: 200% 100%;
+  animation: fate-shimmer 1.8s linear infinite;
+  border-radius: 0.5rem;
+}
+.fate-shimmer-rounded {
+  border-radius: 9999px;
+}
+
+/* ── Toast styling with Fate palette ──────────────────────── */
+/* Default/info toast — orange accent left border */
+li[data-state].bg-background {
+  background-color: var(--fate-bg-card) !important;
+  border-color: var(--fate-border) !important;
+  border-radius: 0.75rem !important;
+  border-left: 4px solid var(--fate-accent) !important;
+  box-shadow: 0 10px 30px -8px var(--fate-shadow-md),
+              0 4px 10px -4px var(--fate-shadow) !important;
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  color: var(--fate-text) !important;
+}
+
+/* Destructive/error toast — red accent left border */
+li[data-state].bg-destructive {
+  background-color: var(--fate-bg-card) !important;
+  color: var(--fate-text) !important;
+  border-color: var(--fate-border) !important;
+  border-radius: 0.75rem !important;
+  border-left: 4px solid var(--fate-danger) !important;
+  box-shadow: 0 10px 30px -8px var(--fate-shadow-md),
+              0 4px 10px -4px var(--fate-shadow) !important;
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+}
+
+/* Dark mode toast backgrounds */
+.dark li[data-state].bg-background,
+.dark li[data-state].bg-destructive {
+  background-color: var(--fate-bg-card) !important;
+}
+
+/* ── Scene-panel token card hover (selected-on-canvas signal) ─ */
+.fate-token-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              background-color 0.2s ease, border-left-width 0.15s ease;
+}
+.fate-token-card:hover {
+  transform: translateY(-1px) scale(1.012);
+  box-shadow: 0 6px 18px var(--fate-shadow-md),
+              0 0 0 1px var(--fate-accent-glow);
+  border-left-width: 5px !important;
+  background-color: rgba(230, 126, 34, 0.05) !important;
+}
+.dark .fate-token-card:hover {
+  background-color: rgba(243, 156, 18, 0.08) !important;
+}
+
+/* ── Empty state — larger circular icon with subtle float ── */
+.fate-empty-state {
+  animation: fate-float 4s ease-in-out infinite;
+}
+.fate-empty-icon {
+  width: 5rem !important;
+  height: 5rem !important;
+  border-radius: 9999px !important;
+  animation: fate-float 4s ease-in-out infinite;
+}
+
+/* ── Inline empty placeholder for sections with no content ── */
+.fate-empty-placeholder {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px dashed var(--fate-border);
+  background: rgba(0, 0, 0, 0.015);
+  transition: all 0.2s ease;
+}
+.dark .fate-empty-placeholder {
+  background: rgba(255, 255, 255, 0.025);
+}
+.fate-empty-placeholder:hover {
+  border-color: var(--fate-accent);
+  background: rgba(230, 126, 34, 0.05);
+}
+
+/* ── Command Palette animations ── */
+.fate-command-enter {
+  animation: fate-scale-in 0.15s ease-out;
+}
+.fate-command-item {
+  transition: all 0.12s ease;
+}
+.fate-command-item:hover {
+  transform: translateX(2px);
+}
+
+/* ── Floating Action Button (FAB) ── */
+.fate-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 40;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.25), 0 4px 8px rgba(44, 62, 80, 0.15);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, var(--fate-accent), var(--fate-accent-dark));
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.fate-fab:hover {
+  transform: scale(1.08) rotate(8deg);
+  box-shadow: 0 12px 32px rgba(230, 126, 34, 0.4), 0 6px 12px rgba(44, 62, 80, 0.2);
+}
+.fate-fab:active {
+  transform: scale(0.95);
+}
+.fate-fab-menu {
+  position: absolute;
+  bottom: 4.25rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+.fate-fab-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 9999px;
+  background: var(--fate-bg-card);
+  border: 1px solid var(--fate-border);
+  box-shadow: 0 4px 12px var(--fate-shadow);
+  color: var(--fate-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: fate-scale-in 0.18s ease-out backwards;
+}
+.fate-fab-menu-item:hover {
+  border-color: var(--fate-accent);
+  transform: translateX(-4px);
+  box-shadow: 0 6px 16px var(--fate-shadow-md);
+}
+.fate-fab-menu-item .fate-fab-mini-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(230, 126, 34, 0.12);
+  color: var(--fate-accent);
+  flex-shrink: 0;
+}
+
+/* ── Subtle paper texture for static cards ────────────────── */
+/* (fate-card-static base styles live above; this adds the texture overlay) */
+.fate-card-static {
+  position: relative;
+}
+.fate-card-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+.dark .fate-card-static::after {
+  opacity: 0.04;
+  mix-blend-mode: screen;
+}
+
+/* ── Animated header gradient (very slow, subtle) ─────────── */
+.fate-header-anim {
+  background-size: 200% 200% !important;
+  animation: fate-header-shift 15s ease-in-out infinite;
+}
+@keyframes fate-header-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ── Note content — markdown-friendly typography ──────────── */
+/* Renders simple inline markdown (**bold**, *italic*, `code`) and block
+   markdown (lists, line breaks) nicely when paired with a renderer. */
+.fate-note-content {
+  color: var(--fate-text-muted);
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.fate-note-content strong,
+.fate-note-content b {
+  color: var(--fate-text);
+  font-weight: 700;
+}
+.fate-note-content em,
+.fate-note-content i {
+  font-style: italic;
+  color: var(--fate-text);
+}
+.fate-note-content code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.85em;
+  background-color: rgba(230, 126, 34, 0.1);
+  color: var(--fate-accent-dark);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(230, 126, 34, 0.15);
+}
+.dark .fate-note-content code {
+  color: var(--fate-accent-light);
+}
+.fate-note-content p {
+  margin: 0 0 0.5em 0;
+}
+.fate-note-content p:last-child {
+  margin-bottom: 0;
+}
+.fate-note-content ul,
+.fate-note-content ol {
+  margin: 0.4em 0;
+  padding-left: 1.25em;
+}
+.fate-note-content ul {
+  list-style: disc;
+}
+.fate-note-content ol {
+  list-style: decimal;
+}
+.fate-note-content li {
+  margin: 0.15em 0;
+}
+.fate-note-content li::marker {
+  color: var(--fate-accent);
+}
+.fate-note-content blockquote {
+  margin: 0.5em 0;
+  padding: 0.25em 0.75em;
+  border-left: 3px solid var(--fate-accent);
+  background-color: rgba(230, 126, 34, 0.05);
+  border-radius: 0 0.25rem 0.25rem 0;
+  color: var(--fate-text-muted);
+  font-style: italic;
+}
+.fate-note-content h1,
+.fate-note-content h2,
+.fate-note-content h3,
+.fate-note-content h4 {
+  color: var(--fate-text);
+  font-weight: 700;
+  margin: 0.6em 0 0.3em 0;
+  line-height: 1.25;
+}
+.fate-note-content h1 { font-size: 1.15em; }
+.fate-note-content h2 { font-size: 1.08em; }
+.fate-note-content h3 { font-size: 1em; }
+.fate-note-content h4 { font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.04em; }
+.fate-note-content a {
+  color: var(--fate-accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.fate-note-content a:hover {
+  color: var(--fate-accent);
+}
+.fate-note-content hr {
+  border: none;
+  border-top: 1px solid var(--fate-border);
+  margin: 0.75em 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Task 12-c — Token Health Viz & Styling Polish
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Token health legend overlay (used in map panel) ──────── */
+.fate-token-legend {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 20;
+  display: flex;
+  gap: 12px;
+  padding: 6px 10px;
+  background: var(--fate-bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  border: 1px solid var(--fate-border);
+  font-size: 10px;
+  color: var(--fate-text-muted);
+  pointer-events: none;
+}
+.fate-token-legend > * {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dark .fate-token-legend {
+  /* Now uses var(--fate-bg-card) directly */
+}
+
+/* ── Strengthened focus-visible ring (global catch-all) ───── */
+*:focus-visible {
+  outline: 2px solid var(--fate-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Loading skeleton shimmer (orange-tinted) ─────────────── */
+.fate-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(230, 126, 34, 0.04) 0%,
+    rgba(230, 126, 34, 0.12) 50%,
+    rgba(230, 126, 34, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: fate-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes fate-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Critical (red) pulsing glow for HTML elements ────────── */
+@keyframes fate-critical-pulse {
+  0%, 100% { box-shadow: 0 0 8px 1px rgba(231, 76, 60, 0.6); }
+  50% { box-shadow: 0 0 18px 4px rgba(231, 76, 60, 0.9); }
+}
+.fate-critical-glow {
+  animation: fate-critical-pulse 1.2s ease-in-out infinite;
+}
+
+/* ── Light wound (orange) pulsing glow for HTML elements ──── */
+@keyframes fate-wound-pulse {
+  0%, 100% { box-shadow: 0 0 4px 0 rgba(243, 156, 18, 0.4); }
+  50% { box-shadow: 0 0 10px 2px rgba(243, 156, 18, 0.7); }
+}
+.fate-wound-glow {
+  animation: fate-wound-pulse 1.8s ease-in-out infinite;
+}
+
+/* ── Markdown table styling for notes content ─────────────── */
+.fate-note-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5rem 0;
+  font-size: 0.75rem;
+}
+.fate-note-content th,
+.fate-note-content td {
+  border: 1px solid var(--fate-border);
+  padding: 4px 8px;
+  text-align: left;
+}
+.fate-note-content th {
+  background: rgba(230, 126, 34, 0.08);
+  font-weight: 600;
+}
+
+/* ── Scroll area fade mask (subtle top/bottom fade) ───────── */
+.fate-scroll-fade {
+  mask-image: linear-gradient(to bottom, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Task 13-c — Visual Polish & Micro-interactions
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── New keyframe animations (warm Fate palette) ──────────── */
+
+/* Smooth gradient shift (used by header / banner backgrounds) */
+@keyframes fate-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Subtle glow pulse for active elements */
+@keyframes fate-subtle-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+  50% { box-shadow: 0 0 12px 2px rgba(230, 126, 34, 0.2); }
+}
+
+/* Slide in from right (used by log entries) */
+@keyframes fate-slide-in-right {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Bounce-in entrance (used by dialog content) */
+@keyframes fate-bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Shimmer sweep (loading / skeleton sweep effect) */
+@keyframes fate-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Animated border glow for important elements */
+@keyframes fate-border-glow-anim {
+  0%, 100% {
+    border-color: color-mix(in srgb, var(--fate-accent) 50%, transparent);
+    box-shadow: 0 0 6px 0 rgba(230, 126, 34, 0.15);
+  }
+  50% {
+    border-color: var(--fate-accent);
+    box-shadow: 0 0 14px 2px rgba(230, 126, 34, 0.35);
+  }
+}
+
+/* Gentle shake for failure states */
+@keyframes fate-fail-shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px) rotate(-1deg); }
+  30% { transform: translateX(6px) rotate(1deg); }
+  45% { transform: translateX(-4px) rotate(-0.5deg); }
+  60% { transform: translateX(4px) rotate(0.5deg); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+
+/* Dramatic glow for "great success" result */
+@keyframes fate-great-glow {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(39, 174, 96, 0.4),
+                 0 0 12px rgba(39, 174, 96, 0.25);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(39, 174, 96, 0.8),
+                 0 0 24px rgba(39, 174, 96, 0.5),
+                 0 0 40px rgba(39, 174, 96, 0.25);
+  }
+}
+
+/* ── New animation utility classes ────────────────────────── */
+
+/* Number pop — for dice results / count changes */
+.fate-animate-pop {
+  animation: fate-number-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Bounce-in entrance — for dialogs / important cards */
+.fate-animate-bounce-in {
+  animation: fate-bounce-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Slide in from left — used by scene panel cards */
+.fate-animate-slide-left {
+  animation: fate-slide-in-left 0.35s ease-out backwards;
+}
+
+/* Slide in from right — used by log entries */
+.fate-animate-slide-right {
+  animation: fate-slide-in-right 0.35s ease-out backwards;
+}
+
+/* Subtle glow pulse — for active state indicators */
+.fate-subtle-glow {
+  animation: fate-subtle-glow 3s ease-in-out infinite;
+}
+
+/* Sweep effect — relative container with a ::after sweep on hover */
+.fate-sweep-effect {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fate-sweep-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.fate-sweep-effect:hover::after {
+  opacity: 1;
+  animation: fate-sweep 0.9s ease-out;
+}
+
+/* Warm gradient text — orange to amber */
+.fate-text-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--fate-accent) 0%,
+    var(--fate-accent-light) 50%,
+    var(--fate-accent) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: fate-gradient-shift 8s ease-in-out infinite;
+}
+/* Fallback for browsers without background-clip:text support */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fate-text-gradient {
+    color: var(--fate-accent);
+    -webkit-text-fill-color: initial;
+    background: none;
+  }
+}
+
+/* Animated border glow — for important active elements */
+.fate-border-glow {
+  border: 1px solid var(--fate-accent);
+  animation: fate-border-glow-anim 2.2s ease-in-out infinite;
+}
+
+/* Enhanced card hover — slight rotation + lift */
+.fate-card-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  will-change: transform;
+}
+.fate-card-hover:hover {
+  transform: translateY(-3px) rotate(-0.4deg);
+  box-shadow: 0 10px 28px var(--fate-shadow-md);
+  border-color: color-mix(in srgb, var(--fate-accent) 40%, transparent);
+}
+.fate-card-hover:active {
+  transform: translateY(-1px) rotate(0deg);
+}
+
+/* Button shine — diagonal light sweep on hover */
+.fate-button-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fate-button-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+.fate-button-shine > * {
+  position: relative;
+  z-index: 1;
+}
+.fate-button-shine:hover::before {
+  opacity: 1;
+  animation: fate-btn-sweep 0.9s ease-out;
+}
+
+/* ── Scene panel — staggered character card entrance ──────── */
+.fate-char-stagger {
+  animation: fate-slide-in-left 0.4s ease-out backwards;
+}
+
+/* ── Fate points pulse on change ──────────────────────────── */
+@keyframes fate-fp-pulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.35); }
+  60% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+.fate-fp-pulse {
+  animation: fate-fp-pulse 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Header — toolbar button hover bottom-border slide ────── */
+.fate-toolbar-btn {
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease,
+              transform 0.2s ease;
+}
+.fate-toolbar-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--fate-accent-light);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+.fate-toolbar-btn:hover::after {
+  width: 60%;
+}
+
+/* ── Log panel — NEW indicator for newest entry ───────────── */
+.fate-new-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 1px 5px;
+  border-radius: 9999px;
+  color: white;
+  background: linear-gradient(135deg, var(--fate-accent), var(--fate-accent-light));
+  box-shadow: 0 0 8px rgba(230, 126, 34, 0.35);
+  animation: fate-number-pop 0.45s ease-out;
+  text-transform: uppercase;
+}
+.fate-new-indicator::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+  animation: fate-fade-in 1.2s ease-in-out infinite alternate;
+}
+
+/* ── Log panel — entry hover intensification ──────────────── */
+.fate-log-entry {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-left-width 0.2s ease,
+              box-shadow 0.25s ease,
+              background-color 0.2s ease;
+}
+.fate-log-entry:hover {
+  transform: scale(1.015);
+  border-left-width: 5px !important;
+  box-shadow: 0 4px 12px var(--fate-shadow-md);
+}
+
+/* ── Fate dice chips — inline visual dice in log entries ──── */
+/* Compact color-coded chips: green «+», red «−», muted «○».    */
+.fate-dice-chips {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  user-select: none;
+}
+.fate-dice-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-family: 'Segoe UI Symbol', 'Apple Symbols', system-ui, sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.18s ease;
+  /* Stagger pop-in: each chip animates slightly after the previous. */
+  animation: fate-dice-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.fate-dice-chip:nth-child(1) { animation-delay: 0ms; }
+.fate-dice-chip:nth-child(2) { animation-delay: 45ms; }
+.fate-dice-chip:nth-child(3) { animation-delay: 90ms; }
+.fate-dice-chip:nth-child(4) { animation-delay: 135ms; }
+.fate-dice-chip:nth-child(5) { animation-delay: 180ms; }
+.fate-dice-chip:nth-child(6) { animation-delay: 225ms; }
+
+.fate-dice-chip--plus {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 60, 0, 0.45);
+}
+.fate-dice-chip--minus {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(60, 0, 0, 0.45);
+}
+.fate-dice-chip--blank {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--fate-text-muted) 28%, transparent) 0%, color-mix(in srgb, var(--fate-text-muted) 18%, transparent) 100%);
+  color: var(--fate-text-muted);
+  border: 1px solid color-mix(in srgb, var(--fate-text-muted) 30%, transparent);
+  text-shadow: none;
+}
+.fate-dice-chips:hover .fate-dice-chip {
+  transform: translateY(-1px);
+}
+
+/* Large chips (used in roll-dialog result area) — heavier shadow + bounce
+   so the celebratory moment reads as a bigger visual beat than the inline
+   log chips. */
+.fate-dice-chip--lg,
+.fate-dice-chips .fate-dice-chip[style*="width: 40px"] {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28),
+    inset 0 2px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.14);
+}
+.fate-dice-chips:hover .fate-dice-chip[style*="width: 40px"] {
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Disable the stagger pop-in when the chips are re-rendered in place
+   (avoids replaying the animation on every render of the result block). */
+.fate-dice-chips--no-anim .fate-dice-chip {
+  animation: none;
+}
+
+@keyframes fate-dice-pop {
+  0%   { transform: scale(0.3) rotate(-18deg); opacity: 0; }
+  60%  { transform: scale(1.12) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fate-dice-chip { animation: none; }
+}
+
+/* ── Log panel — filter pill active pulse ─────────────────── */
+.fate-filter-pill {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.fate-filter-pill[data-active="true"] {
+  animation: fate-number-pop 0.35s ease-out;
+  box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 25%, transparent);
+}
+
+/* ── Map panel — zoom display monospace ───────────────────── */
+.fate-zoom-display {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.fate-zoom-display:hover {
+  color: var(--fate-accent) !important;
+  transform: scale(1.05);
+}
+
+/* ── Map panel — pulse for conditions button when token sel. */
+@keyframes fate-conditions-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.5); }
+  50% { box-shadow: 0 0 10px 2px rgba(230, 126, 34, 0.35); }
+}
+.fate-conditions-pulse {
+  animation: fate-conditions-pulse 1.6s ease-in-out infinite;
+}
+
+/* ── Dialog — hover effect removed to prevent shift ────────── */
+/* NOTE: Any `transform` on dialog-content (including scale) will fight with
+   the CSS `translate: -50% -50%` centering, causing the dialog to visually
+   shift away from the cursor. Removed entirely for stable positioning. */
+
+/* ── Dialog title gradient utility (Fate warm) ────────────── */
+.fate-dialog-title {
+  background: linear-gradient(100deg, var(--fate-accent), var(--fate-accent-light));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: fate-gradient-shift 8s ease-in-out infinite;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fate-dialog-title {
+    color: var(--fate-accent);
+    -webkit-text-fill-color: initial;
+    background: none;
+  }
+}
+
+/* ── Quick-roll dialog — great-success dramatic glow ──────── */
+.fate-great-result {
+  animation: fate-great-glow 1.8s ease-in-out infinite;
+}
+
+/* ── Quick-roll dialog — fail shake ───────────────────────── */
+.fate-fail-shake {
+  animation: fate-fail-shake 0.55s ease-in-out;
+}
+
+/* ── Quick-roll dialog — result container glow tint ───────── */
+.fate-result-great-glow {
+  box-shadow:
+    0 0 0 1px rgba(39, 174, 96, 0.3),
+    0 0 24px 4px rgba(39, 174, 96, 0.2),
+    0 0 48px 8px rgba(39, 174, 96, 0.1);
+  animation: fate-great-glow 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Task 4 — Styling Polish (additional micro-interactions & details)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Shimmer line — subtle shimmer that moves across active elements ── */
+@keyframes fate-shimmer-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.fate-shimmer-line {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fate-shimmer-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(230, 126, 34, 0.08) 40%,
+    rgba(230, 126, 34, 0.18) 50%,
+    rgba(230, 126, 34, 0.08) 60%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+  z-index: 1;
+  animation: fate-shimmer-line 3s ease-in-out infinite;
+}
+.dark .fate-shimmer-line::after {
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(243, 156, 18, 0.06) 40%,
+    rgba(243, 156, 18, 0.14) 50%,
+    rgba(243, 156, 18, 0.06) 60%,
+    transparent 100%
+  );
+}
+
+/* ── Styled tooltip class ─────────────────────────────────── */
+.fate-tooltip {
+  position: relative;
+}
+.fate-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 9999;
+  background: var(--fate-bg-card);
+  color: var(--fate-text);
+  border: 1px solid var(--fate-border);
+  box-shadow: 0 4px 12px var(--fate-shadow-md);
+}
+.fate-tooltip:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.fate-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--fate-border);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+}
+.fate-tooltip:hover::after {
+  opacity: 1;
+}
+
+/* ── Badge pulse animation for important badges ────────────── */
+@keyframes fate-badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(230, 126, 34, 0);
+    transform: scale(1.08);
+  }
+}
+.fate-badge-pulse {
+  animation: fate-badge-pulse 2s ease-in-out infinite;
+}
+.dark .fate-badge-pulse {
+  animation-name: fate-badge-pulse-dark;
+}
+@keyframes fate-badge-pulse-dark {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(243, 156, 18, 0);
+    transform: scale(1.08);
+  }
+}
+
+/* ── Welcome screen — decorative background pattern ────────── */
+.fate-welcome-bg {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(230, 126, 34, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(44, 62, 80, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(230, 126, 34, 0.03) 0%, transparent 60%),
+    var(--fate-bg);
+}
+.fate-welcome-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image: radial-gradient(circle, var(--fate-border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.dark .fate-welcome-bg::before {
+  opacity: 0.15;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+/* ── Welcome card glow ────────────────────────────────────── */
+.fate-welcome-card {
+  box-shadow: 0 0 0 1px var(--fate-border),
+              0 4px 24px var(--fate-shadow-md),
+              0 0 40px -8px var(--fate-accent-glow);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.fate-welcome-card:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--fate-accent) 30%, transparent),
+              0 8px 32px var(--fate-shadow-md),
+              0 0 60px -4px var(--fate-accent-glow);
+  transform: translateY(-2px);
+}
+
+/* ── Dice logo hover rotation ─────────────────────────────── */
+.fate-dice-logo {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.fate-dice-logo:hover {
+  transform: rotate(25deg) scale(1.1);
+}
+
+/* ── Decorative dots around welcome title ──────────────────── */
+.fate-welcome-title-decorator {
+  position: relative;
+  display: inline-block;
+}
+.fate-welcome-title-decorator::before,
+.fate-welcome-title-decorator::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  color: var(--fate-accent);
+  opacity: 0.5;
+  animation: fate-sparkle 2.4s ease-in-out infinite;
+}
+.fate-welcome-title-decorator::before {
+  left: -20px;
+  animation-delay: 0s;
+}
+.fate-welcome-title-decorator::after {
+  right: -20px;
+  animation-delay: 1.2s;
+}
+
+/* ── Adventure selector dice icon ─────────────────────────── */
+.fate-adventure-select-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ── Scene panel — gradient overlay at top ─────────────────── */
+.fate-scene-gradient-top {
+  position: relative;
+}
+.fate-scene-gradient-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(230, 126, 34, 0.04), transparent);
+  border-radius: inherit;
+}
+
+/* ── Scene panel — empty add button pulse ─────────────────── */
+@keyframes fate-add-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(230, 126, 34, 0);
+  }
+}
+.fate-add-pulse {
+  animation: fate-add-pulse 2s ease-in-out infinite;
+}
+.dark .fate-add-pulse {
+  animation-name: fate-add-pulse-dark;
+}
+@keyframes fate-add-pulse-dark {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(243, 156, 18, 0);
+  }
+}
+
+/* ── Character avatar hover card ──────────────────────────── */
+.fate-avatar-hover {
+  position: relative;
+  cursor: pointer;
+}
+.fate-avatar-hover-info {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+  background: var(--fate-bg-card);
+  color: var(--fate-text);
+  border: 1px solid var(--fate-border);
+  box-shadow: 0 6px 16px var(--fate-shadow-md);
+}
+.fate-avatar-hover:hover .fate-avatar-hover-info {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ── Map panel — canvas shadow/border ─────────────────────── */
+.fate-map-canvas-wrapper {
+  border: 1px solid var(--fate-border);
+  border-radius: 6px;
+  box-shadow: inset 0 0 20px rgba(44, 62, 80, 0.04),
+              0 2px 8px var(--fate-shadow);
+  overflow: hidden;
+}
+.dark .fate-map-canvas-wrapper {
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2),
+              0 2px 8px var(--fate-shadow);
+}
+
+/* ── Map panel — glassmorphism toolbar buttons ────────────── */
+.fate-map-toolbar {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dark .fate-map-toolbar {
+  background: rgba(38, 43, 52, 0.65);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Map panel — tool transition animation ────────────────── */
+.fate-tool-btn {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 6px;
+  position: relative;
+}
+.fate-tool-btn:hover:not([data-state="on"]) {
+  background-color: rgba(230, 126, 34, 0.1) !important;
+  color: var(--fate-accent) !important;
+  transform: scale(1.08);
+}
+.fate-tool-btn[data-state="on"] {
+  background-color: var(--fate-accent) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px var(--fate-accent-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+.fate-tool-btn[data-state="on"]::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--fate-accent);
+  box-shadow: 0 0 4px var(--fate-accent);
+}
+
+/* ── Zone tool hint badge ─────────────────────────────────── */
+.fate-zone-hint {
+  animation: fate-zone-hint-pulse 2.5s ease-in-out infinite;
+}
+@keyframes fate-zone-hint-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.1); }
+}
+
+/* ── Empty map state — floating icon animation ────────────── */
+.fate-empty-map-state .fate-map-empty-icon {
+  animation: fate-map-empty-float 3s ease-in-out infinite;
+}
+@keyframes fate-map-empty-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ── Map panel — floor tab card style ─────────────────────── */
+.fate-floor-tab {
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--fate-text-muted);
+}
+.fate-floor-tab:hover {
+  background: rgba(230, 126, 34, 0.06);
+  border-color: rgba(230, 126, 34, 0.15);
+}
+.fate-floor-tab-active {
+  background: var(--fate-accent) !important;
+  color: white !important;
+  border-color: var(--fate-accent-dark) !important;
+  box-shadow: 0 2px 6px var(--fate-accent-glow);
+}
+.dark .fate-floor-tab:hover {
+  background: rgba(243, 156, 18, 0.1);
+  border-color: rgba(243, 156, 18, 0.2);
+}
+
+/* Add-floor button — dashed outline, plus icon */
+.fate-floor-tab-add {
+  padding: 2px 7px;
+  border: 1px dashed rgba(127, 140, 141, 0.4) !important;
+  color: var(--fate-text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fate-floor-tab-add:hover {
+  border-color: var(--fate-accent) !important;
+  color: var(--fate-accent);
+  background: rgba(230, 126, 34, 0.06);
+}
+.dark .fate-floor-tab-add:hover {
+  border-color: var(--fate-accent) !important;
+  color: var(--fate-accent);
+  background: rgba(243, 156, 18, 0.1);
+}
+
+/* Thin scrollbar for floor tabs row */
+.fate-thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(127, 140, 141, 0.3) transparent;
+}
+.fate-thin-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.fate-thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.fate-thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(127, 140, 141, 0.3);
+  border-radius: 2px;
+}
+.fate-thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 140, 141, 0.5);
+}
+
+/* ── Log panel — gradient header bar ──────────────────────── */
+.fate-log-header {
+  background: linear-gradient(135deg, rgba(230, 126, 34, 0.08), transparent 70%);
+  border-bottom: 1px solid var(--fate-border);
+}
+.dark .fate-log-header {
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.06), transparent 70%);
+}
+
+/* ── Log panel — staggered entrance animation ─────────────── */
+@keyframes fate-log-stagger-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.fate-log-stagger > * {
+  animation: fate-log-stagger-in 0.3s ease-out backwards;
+}
+.fate-log-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.fate-log-stagger > *:nth-child(2) { animation-delay: 30ms; }
+.fate-log-stagger > *:nth-child(3) { animation-delay: 60ms; }
+.fate-log-stagger > *:nth-child(4) { animation-delay: 90ms; }
+.fate-log-stagger > *:nth-child(5) { animation-delay: 120ms; }
+.fate-log-stagger > *:nth-child(6) { animation-delay: 150ms; }
+.fate-log-stagger > *:nth-child(7) { animation-delay: 180ms; }
+.fate-log-stagger > *:nth-child(8) { animation-delay: 210ms; }
+.fate-log-stagger > *:nth-child(9) { animation-delay: 240ms; }
+.fate-log-stagger > *:nth-child(10) { animation-delay: 270ms; }
+.fate-log-stagger > *:nth-child(n+11) { animation-delay: 300ms; }
+
+/* ── Log panel — timeline line connecting entries ──────────── */
+.fate-timeline-entry {
+  position: relative;
+  padding-left: 16px;
+}
+.fate-timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--fate-border), transparent);
+  opacity: 0.5;
+}
+.fate-timeline-entry::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fate-bg-card);
+  border: 2px solid var(--fate-border);
+  z-index: 1;
+}
+.fate-timeline-entry:first-child::before {
+  top: 12px;
+}
+.fate-timeline-entry:first-child::after {
+  border-color: var(--fate-accent);
+  background: var(--fate-accent);
+  box-shadow: 0 0 6px var(--fate-accent-glow);
+}
+
+/* ── Log panel — toggle pill filter buttons ───────────────── */
+.fate-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--fate-border);
+  background: transparent;
+  color: var(--fate-text-muted);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+.fate-toggle-pill:hover {
+  border-color: color-mix(in srgb, var(--fate-accent) 40%, transparent);
+  background: rgba(230, 126, 34, 0.06);
+  transform: scale(1.04);
+}
+.fate-toggle-pill-active {
+  background: var(--fate-accent) !important;
+  color: white !important;
+  border-color: var(--fate-accent-dark) !important;
+  box-shadow: 0 2px 8px var(--fate-accent-glow);
+  transform: scale(1.04);
+}
+.dark .fate-toggle-pill:hover {
+  background: rgba(243, 156, 18, 0.1);
+  border-color: rgba(243, 156, 18, 0.25);
+}
+
+/* ── Filter pill status dot + count badge ──────────────────── */
+/* Small colored dot before the label — instant visual cue     */
+/* matching the result type (red=fail, orange=tie, etc.).      */
+.fate-filter-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Count badge — pill-shaped, slightly muted when inactive */
+.fate-filter-pill-count {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 9999px;
+  line-height: 1.2;
+  min-width: 16px;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+/* Active state: the dot pulses subtly to draw attention */
+.fate-filter-pill-active .fate-filter-pill-dot {
+  animation: fate-filter-dot-pulse 1.8s ease-in-out infinite;
+}
+@keyframes fate-filter-dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.85; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fate-filter-pill-active .fate-filter-pill-dot { animation: none; }
+}
+
+/* ── Initiative tracker — conflict header polish ───────────── */
+/* Icon badge for conflict type (physical=red, mental=purple)  */
+.fate-conflict-icon-badge {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: transform 0.2s ease;
+}
+.fate-conflict-header:hover .fate-conflict-icon-badge {
+  transform: scale(1.06);
+}
+/* Small pulsing dot before "Раунд N" — indicates active combat */
+.fate-round-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e74c3c;
+  box-shadow: 0 0 4px rgba(231, 76, 60, 0.6);
+  animation: fate-round-dot-pulse 1.6s ease-in-out infinite;
+}
+@keyframes fate-round-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fate-round-dot { animation: none; }
+}
+
+/* ── Smooth scrollbar styling (global, both light & dark) ─── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fate-text-muted) 25%, transparent) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--fate-text-muted) 25%, transparent);
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--fate-accent);
+}
+
+/* ── Mode toggle premium feel ─────────────────────────────── */
+.fate-mode-toggle {
+  position: relative;
+  isolation: isolate;
+}
+.fate-mode-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--fate-accent), var(--fate-accent-light), var(--fate-accent));
+  background-size: 200% auto;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: fate-gradient-shift 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.fate-mode-toggle:hover::before {
+  opacity: 0.6;
+}
+
+/* ── Token size preview circle ─────────────────────────────── */
+.fate-token-preview {
+  border-radius: 50%;
+  border: 2px solid var(--fate-accent);
+  background: rgba(230, 126, 34, 0.1);
+  transition: width 0.2s ease, height 0.2s ease;
+  flex-shrink: 0;
+}
+.dark .fate-token-preview {
+  background: rgba(243, 156, 18, 0.15);
+}
+
+/* ── Map zoom indicator with icon ──────────────────────────── */
+.fate-zoom-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  background: rgba(230, 126, 34, 0.06);
+  color: var(--fate-text-muted);
+  border: 1px solid rgba(230, 126, 34, 0.12);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.fate-zoom-indicator:hover {
+  background: rgba(230, 126, 34, 0.12);
+  color: var(--fate-accent);
+  border-color: rgba(230, 126, 34, 0.25);
+}
+.dark .fate-zoom-indicator {
+  background: rgba(243, 156, 18, 0.08);
+  border-color: rgba(243, 156, 18, 0.15);
+}
+
+/* ── Dialog title gradient bar (Polish Area 5) ───────────── */
+/* Pseudo-element underline beneath dialog titles — left→right
+   gradient from accent to transparent, with subtle glow. */
+.fate-dialog-title-bar {
+  position: relative;
+  display: block;
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+}
+.fate-dialog-title-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  margin-top: 8px;
+  background: linear-gradient(to right, var(--fate-accent), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(230, 126, 34, 0.4);
+  pointer-events: none;
+}
+
+/* ── Welcome tip card (Polish Area 1) ─────────────────────── */
+.fate-tip-card {
+  background: linear-gradient(135deg, rgba(230, 126, 34, 0.06), rgba(230, 126, 34, 0.02));
+  border: 1px solid rgba(230, 126, 34, 0.18);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.fate-tip-card:hover {
+  border-color: rgba(230, 126, 34, 0.32);
+  background: linear-gradient(135deg, rgba(230, 126, 34, 0.1), rgba(230, 126, 34, 0.03));
+}
+.dark .fate-tip-card {
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.08), rgba(243, 156, 18, 0.02));
+  border-color: rgba(243, 156, 18, 0.2);
+}
+.dark .fate-tip-card:hover {
+  border-color: rgba(243, 156, 18, 0.35);
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.12), rgba(243, 156, 18, 0.03));
+}
+
+/* ── Floating dice emojis in welcome background ───────────── */
+.fate-float-dice {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.12;
+  font-size: 28px;
+  animation: fate-float-dice 7s ease-in-out infinite;
+  filter: grayscale(0.3);
+  z-index: 0;
+}
+.fate-float-dice:nth-child(2) { animation-delay: -1.2s; animation-duration: 8.5s; }
+.fate-float-dice:nth-child(3) { animation-delay: -2.4s; animation-duration: 9s; }
+.fate-float-dice:nth-child(4) { animation-delay: -3.6s; animation-duration: 7.5s; }
+.fate-float-dice:nth-child(5) { animation-delay: -4.8s; animation-duration: 10s; }
+.fate-float-dice:nth-child(6) { animation-delay: -6s; animation-duration: 8s; }
+.dark .fate-float-dice { opacity: 0.08; }
+@keyframes fate-float-dice {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-14px) rotate(8deg); }
+  50% { transform: translateY(-22px) rotate(-6deg); }
+  75% { transform: translateY(-10px) rotate(12deg); }
+}
+
+/* ── Stress box hover ghost (Polish Area 4) ───────────────── */
+/* When hovering an unchecked stress box, show a preview "ghost"
+   of the filled state via subtle background + box-shadow. */
+.fate-stress-box {
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 9999px;
+}
+.fate-stress-box:not(.fate-stress-checked):hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--fate-danger);
+  opacity: 0.22;
+  pointer-events: none;
+}
+.fate-stress-box:not(.fate-stress-checked):hover {
+  transform: scale(1.18);
+  border-color: var(--fate-danger);
+}
+.fate-stress-checked {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15),
+              inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.dark .fate-stress-checked {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+              inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Map token radius slider min/max circle markers ────────── */
+.fate-token-size-marker {
+  border-radius: 9999px;
+  background: var(--fate-text-muted);
+  opacity: 0.45;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.fate-token-size-marker:hover { opacity: 0.7; }
+
+/* ── Combat timer running pulse border (Polish Area 3) ────── */
+.fate-timer-running {
+  animation: fate-timer-pulse-glow 2s ease-in-out infinite;
+}
+@keyframes fate-timer-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+  50% { box-shadow: 0 0 14px 3px rgba(230, 126, 34, 0.45); }
+}
+.fate-timer-long {
+  animation: fate-timer-long-glow 1.5s ease-in-out infinite;
+}
+@keyframes fate-timer-long-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(231, 76, 60, 0.4); }
+  50% { box-shadow: 0 0 22px 5px rgba(231, 76, 60, 0.75); }
+}
+
+/* ── Log entry time-ago label ─────────────────────────────── */
+.fate-time-ago {
+  font-size: 9px;
+  opacity: 0.6;
+  margin-left: 6px;
+  font-style: italic;
+  transition: opacity 0.2s ease;
+}
+
+/* ── Loading skeleton cards (Polish Area 6) ───────────────── */
+.fate-skeleton-card {
+  border: 1px solid var(--fate-border);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--fate-bg-card);
+}
+
+/* ── New keyframes for richer animations ──────────────────── */
+@keyframes fate-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fate-slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fate-shimmer-bg {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ── Story beats icon container ───────────────────────────── */
+.fate-story-beat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Scene preview thumbnail polish ───────────────────────── */
+.fate-scene-preview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--fate-bg-card);
+  transition: all 0.2s ease;
+}
+
+.fate-scene-preview:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Quick stats tile (Character Sheet) ───────────────────── */
+.fate-quick-stat {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.fate-quick-stat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.06) 50%, transparent 60%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.fate-quick-stat:hover::before {
+  opacity: 1;
+  animation: fate-shimmer-bg 1.5s linear infinite;
+}
+
+/* ── Staggered list entrance animation ────────────────────── */
+.fate-stagger-item {
+  animation: fate-fade-in-up 0.4s ease-out backwards;
+}
+
+/* ── Subtle ring highlight for active items ───────────────── */
+.fate-active-ring {
+  box-shadow:
+    0 0 0 2px var(--fate-accent),
+    0 0 0 4px rgba(230, 126, 34, 0.18);
+}
+
+/* ── PC/NPC badge chips in scene panel ────────────────────── */
+.fate-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+.fate-count-chip:hover {
+  transform: translateY(-1px);
+}
+
+/* ── Respect prefers-reduced-motion ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable specific decorative infinite animations entirely */
+  .fate-header-anim,
+  .fate-subtle-glow,
+  .fate-glow-pulse,
+  .fate-text-gradient,
+  .fate-dialog-title,
+  .fate-border-glow,
+  .fate-conditions-pulse,
+  .fate-great-result,
+  .fate-result-great-glow,
+  .fate-empty-state,
+  .fate-empty-icon,
+  .fate-sparkle::before,
+  .fate-sparkle::after,
+  .fate-pulse-ring,
+  .fate-pulse-ring::before,
+  .fate-pulse-ring::after,
+  .fate-critical-glow,
+  .fate-wound-glow,
+  .fate-badge-pulse,
+  .fate-add-pulse,
+  .fate-shimmer-line::after,
+  .fate-welcome-title-decorator::before,
+  .fate-welcome-title-decorator::after,
+  .fate-float-dice,
+  .fate-timer-running,
+  .fate-timer-long {
+    animation: none !important;
+  }
+
+  /* Keep essential transitions for usability, but instant */
+  .fate-card-hover:hover,
+  .fate-log-entry:hover,
+  .fate-zoom-display:hover,
+  [data-slot="dialog-content"]:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   RIFT EVENT — "torn reality" log entry styling
+   Subtle dark background with soft red glow and gentle
+   torn-paper edges (just enough to read as "wrong", not loud).
+   ============================================================ */
+
+.fate-rift-glow-wrapper {
+  position: relative;
+  margin: 0.5rem 0;
+  filter: drop-shadow(0 0 3px rgba(180, 30, 30, 0.28))
+          drop-shadow(0 0 8px rgba(120, 0, 0, 0.15));
+  animation: fate-rift-pulse 3.4s ease-in-out infinite;
+}
+
+@keyframes fate-rift-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(180, 30, 30, 0.28))
+            drop-shadow(0 0 8px rgba(120, 0, 0, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgba(200, 40, 40, 0.38))
+            drop-shadow(0 0 12px rgba(140, 0, 0, 0.22));
+  }
+}
+
+.fate-rift-entry {
+  position: relative;
+  background: linear-gradient(135deg, rgba(28, 6, 6, 0.96) 0%, rgba(50, 12, 12, 0.96) 50%, rgba(22, 4, 4, 0.96) 100%);
+  /* Extra padding so the torn edge never eats into the text. */
+  padding: 16px 22px 18px;
+  color: #d95555;
+  text-shadow: 0 0 2px rgba(255, 60, 60, 0.28), 0 1px 1px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  overflow: hidden;
+  /* No border-radius: the torn-paper mask already gives an irregular contour. */
+  border-radius: 0;
+  /* Torn-paper edges via a single SVG path mask.
+     The path traces a rectangle whose every edge is a chaotic zig-zag of
+     irregularly-spaced points with varied notch depth (0–5 units in a
+     140×42 viewBox). preserveAspectRatio="none" stretches the path to fill
+     the element, so the notches scale naturally with size and never look
+     like a uniform stamp/perforation. This replaces the previous
+     radial-gradient circles which read as perforated stamps, not torn paper.
+     The drop-shadow on the wrapper picks up the mask shape too, so the
+     outer red glow follows the same ragged silhouette. */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27 viewBox%3D%270 0 140 42%27 preserveAspectRatio%3D%27none%27%3E%3Cpath d%3D%27M0.0%2C0.0 L4.1%2C5.0 L11.1%2C2.0 L17.6%2C4.0 L24.8%2C3.0 L30.2%2C2.0 L36.2%2C3.0 L42.4%2C5.0 L46.5%2C2.0 L50.5%2C2.0 L57.4%2C1.0 L61.9%2C1.0 L68.6%2C4.0 L75.7%2C4.0 L78.9%2C2.0 L83.7%2C0.0 L88.9%2C1.0 L94.3%2C0.0 L98.5%2C3.0 L101.8%2C3.0 L107.7%2C5.0 L115.6%2C2.0 L122.3%2C2.0 L127.7%2C0.0 L133.4%2C5.0 L140.0%2C1.0 L140.0%2C1.0 L137.0%2C8.2 L140.0%2C16.8 L139.0%2C21.5 L139.0%2C29.2 L139.0%2C33.6 L138.0%2C42.0 L136.0%2C42.0 L135.2%2C38.0 L130.1%2C42.0 L126.1%2C41.0 L118.7%2C40.0 L111.5%2C38.0 L106.1%2C37.0 L98.1%2C37.0 L94.7%2C38.0 L87.2%2C38.0 L82.6%2C38.0 L75.9%2C42.0 L70.6%2C40.0 L67.0%2C41.0 L61.9%2C39.0 L57.7%2C38.0 L52.2%2C38.0 L46.0%2C39.0 L38.0%2C38.0 L30.1%2C38.0 L24.8%2C41.0 L19.1%2C39.0 L15.5%2C40.0 L9.0%2C40.0 L5.0%2C39.0 L0.1%2C42.0 L1.0%2C42.0 L2.0%2C33.3 L5.0%2C28.8 L4.0%2C23.7 L2.0%2C15.8 L0.0%2C9.8 L1.0%2C5.4 L2.0%2C0.0 Z%27 fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27 viewBox%3D%270 0 140 42%27 preserveAspectRatio%3D%27none%27%3E%3Cpath d%3D%27M0.0%2C0.0 L4.1%2C5.0 L11.1%2C2.0 L17.6%2C4.0 L24.8%2C3.0 L30.2%2C2.0 L36.2%2C3.0 L42.4%2C5.0 L46.5%2C2.0 L50.5%2C2.0 L57.4%2C1.0 L61.9%2C1.0 L68.6%2C4.0 L75.7%2C4.0 L78.9%2C2.0 L83.7%2C0.0 L88.9%2C1.0 L94.3%2C0.0 L98.5%2C3.0 L101.8%2C3.0 L107.7%2C5.0 L115.6%2C2.0 L122.3%2C2.0 L127.7%2C0.0 L133.4%2C5.0 L140.0%2C1.0 L140.0%2C1.0 L137.0%2C8.2 L140.0%2C16.8 L139.0%2C21.5 L139.0%2C29.2 L139.0%2C33.6 L138.0%2C42.0 L136.0%2C42.0 L135.2%2C38.0 L130.1%2C42.0 L126.1%2C41.0 L118.7%2C40.0 L111.5%2C38.0 L106.1%2C37.0 L98.1%2C37.0 L94.7%2C38.0 L87.2%2C38.0 L82.6%2C38.0 L75.9%2C42.0 L70.6%2C40.0 L67.0%2C41.0 L61.9%2C39.0 L57.7%2C38.0 L52.2%2C38.0 L46.0%2C39.0 L38.0%2C38.0 L30.1%2C38.0 L24.8%2C41.0 L19.1%2C39.0 L15.5%2C40.0 L9.0%2C40.0 L5.0%2C39.0 L0.1%2C42.0 L1.0%2C42.0 L2.0%2C33.3 L5.0%2C28.8 L4.0%2C23.7 L2.0%2C15.8 L0.0%2C9.8 L1.0%2C5.4 L2.0%2C0.0 Z%27 fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.fate-rift-entry::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 60, 60, 0.22) 0%, transparent 14%),
+    radial-gradient(circle at 82% 72%, rgba(200, 30, 30, 0.22) 0%, transparent 16%);
+  background-size: 100% 100%, 100% 100%;
+}
+
+.fate-rift-entry .fate-rift-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #d95555;
+  text-shadow: 0 0 3px rgba(255, 60, 60, 0.35), 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.fate-rift-entry .fate-rift-body {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: #c84848;
+  white-space: pre-line;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.fate-rift-entry .fate-rift-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.5rem;
+  opacity: 0.55;
+  font-size: 0.625rem;
+  color: #a83838;
+}
+
+.dark .fate-rift-entry {
+  background: linear-gradient(135deg, rgba(18, 4, 4, 0.97) 0%, rgba(42, 10, 10, 0.97) 50%, rgba(14, 3, 3, 0.97) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fate-rift-glow-wrapper {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   MAGIC CARD — drawn spell card log entry
+   A compact "tarot card" look: gradient header strip with the
+   card name, a tinted body holding the effect text, and small
+   badges for cast type / zone stress / zone name.
+   ============================================================ */
+
+.fate-magic-card {
+  position: relative;
+  margin: 0.35rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(155, 89, 182, 0.32);
+  background: linear-gradient(160deg, rgba(155, 89, 182, 0.07) 0%, rgba(120, 60, 160, 0.04) 60%, rgba(250, 250, 252, 0.5) 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  animation: fate-magic-card-in 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fate-magic-card.fate-magic-card--dangerous {
+  border-color: rgba(231, 76, 60, 0.38);
+  background: linear-gradient(160deg, rgba(231, 76, 60, 0.08) 0%, rgba(180, 50, 40, 0.05) 60%, rgba(252, 248, 248, 0.5) 100%);
+}
+
+.dark .fate-magic-card {
+  background: linear-gradient(160deg, rgba(155, 89, 182, 0.14) 0%, rgba(80, 40, 110, 0.08) 60%, rgba(22, 20, 26, 0.6) 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.dark .fate-magic-card.fate-magic-card--dangerous {
+  background: linear-gradient(160deg, rgba(231, 76, 60, 0.16) 0%, rgba(120, 30, 25, 0.1) 60%, rgba(26, 18, 20, 0.6) 100%);
+}
+
+@keyframes fate-magic-card-in {
+  0% { opacity: 0; transform: translateY(-4px) scale(0.985); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fate-magic-card { animation: none; }
+}
+
+/* Top strip: cast type + card number on the left, timestamp on the right */
+.fate-magic-card__strip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background: linear-gradient(90deg, rgba(155, 89, 182, 0.18) 0%, rgba(155, 89, 182, 0.06) 100%);
+  border-bottom: 1px solid rgba(155, 89, 182, 0.18);
+}
+
+.fate-magic-card--dangerous .fate-magic-card__strip {
+  background: linear-gradient(90deg, rgba(231, 76, 60, 0.2) 0%, rgba(231, 76, 60, 0.06) 100%);
+  border-bottom-color: rgba(231, 76, 60, 0.2);
+}
+
+.dark .fate-magic-card__strip {
+  background: linear-gradient(90deg, rgba(155, 89, 182, 0.26) 0%, rgba(155, 89, 182, 0.08) 100%);
+}
+
+.dark .fate-magic-card--dangerous .fate-magic-card__strip {
+  background: linear-gradient(90deg, rgba(231, 76, 60, 0.28) 0%, rgba(231, 76, 60, 0.08) 100%);
+}
+
+/* Card body: name badge + effect text + footer badges */
+.fate-magic-card__body {
+  padding: 0.5rem 0.65rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fate-magic-card__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+  color: #fff;
+  background: linear-gradient(135deg, #9b59b6 0%, #7d3c98 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  letter-spacing: 0.01em;
+}
+
+.fate-magic-card--dangerous .fate-magic-card__name {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.fate-magic-card__effect {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--fate-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-height: 9rem;
+  overflow-y: auto;
+}
+
+.fate-magic-card__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.1rem;
+}
+
+.fate-magic-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.fate-magic-card__levelup {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.15rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: rgba(231, 76, 60, 0.12);
+  border: 1px solid rgba(231, 76, 60, 0.28);
+  color: var(--fate-danger);
+}
+
+/* ============================================================
+   Physics Quick Roll — кнопка честного броска через physics-service
+   ============================================================ */
+.fate-physics-roll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(13, 71, 161, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+.fate-physics-roll-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent 50%);
+  pointer-events: none;
+}
+.fate-physics-roll-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.4);
+  background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+}
+.fate-physics-roll-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(13, 71, 161, 0.3);
+}
+.fate-physics-roll-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: saturate(0.6);
+}
+
+.fate-physics-roll-btn--header {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  gap: 4px;
+}
+
+.fate-physics-roll-btn--panel {
+  padding: 9px 14px;
+  width: 100%;
+  justify-content: center;
+}
+
+.fate-physics-roll-btn__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Pulse-анимация при броске (для родительского контейнера кнопки) */
+@keyframes fate-physics-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(25, 118, 210, 0); }
+}
+.fate-physics-roll-btn--rolling {
+  animation: fate-physics-pulse 1.2s ease-in-out infinite;
+}
+
+/* Статус-индикатор physics-service (зелёная/красная точка) */
+.fate-physics-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground, #7f8c8d);
+}
+.fate-physics-status__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7f8c8d;
+  transition: background 0.2s ease;
+}
+.fate-physics-status--online .fate-physics-status__dot {
+  background: #27ae60;
+  box-shadow: 0 0 4px rgba(39, 174, 96, 0.6);
+}
+.fate-physics-status--offline .fate-physics-status__dot {
+  background: #e74c3c;
+}
+.fate-physics-status--online {
+  color: #27ae60;
+}
+.fate-physics-status--offline {
+  color: #e74c3c;
+}
+
+/* ── DiceStation — единый блок «набор кубиков на столе» ──
+   В левой панели: 4 настоящих 3D-кубика (вид сверху) + блок UI
+   для бросков (модификатор, кнопка, последний результат).
+   Кубики лежат здесь как физические объекты — это твой набор
+   дайсов на столе. */
+
+.fate-dice-station {
+  position: relative;
+  flex-shrink: 0 !important;
+  z-index: 3;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  margin: 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(28, 32, 40, 0.96) 0%, rgba(16, 19, 25, 0.96) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Light mode override */
+:root:not(.dark) .fate-dice-station {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 246, 248, 0.96) 100%);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.fate-dice-station__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 2px;
+}
+
+.fate-dice-station__icon {
+  color: #1976d2;
+  flex-shrink: 0;
+}
+
+.fate-dice-station__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  flex: 1;
+}
+
+:root:not(.dark) .fate-dice-station__title {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.fate-dice-station__badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(25, 118, 210, 0.2);
+  color: #42a5f5;
+  border: 1px solid rgba(25, 118, 210, 0.3);
+}
+
+/* Clickable variant — quick toggle between 3D physics and 2D random.
+   3D mode shows an orange badge, 2D shows a blue one. Hover scales up
+   slightly and cursor becomes a pointer. */
+.fate-dice-station__badge--toggle {
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.fate-dice-station__badge--toggle:hover {
+  transform: scale(1.12);
+}
+.fate-dice-station__badge--toggle:active {
+  transform: scale(0.94);
+}
+.fate-dice-station__badge--toggle:focus-visible {
+  outline: 2px solid var(--fate-accent);
+  outline-offset: 1px;
+}
+
+/* 2D режим — синий (мгновенный бросок через Math.random).
+   Базовый .fate-dice-station__badge уже синий, но --2d фиксирует явно
+   на случай если базовый класс изменится. */
+.fate-dice-station__badge--2d {
+  background: rgba(25, 118, 210, 0.22);
+  color: #42a5f5;
+  border: 1px solid rgba(25, 118, 210, 0.4);
+}
+
+/* 3D режим — оранжевый акцент (физика Rapier3D, реальные отскоки).
+   Соответствует цвету fate-accent, чтобы игрок сразу видел «активный» режим. */
+.fate-dice-station__badge--3d {
+  background: rgba(230, 126, 34, 0.22);
+  color: var(--fate-accent);
+  border: 1px solid rgba(230, 126, 34, 0.45);
+}
+.fate-dice-station__badge--3d:hover {
+  background: rgba(230, 126, 34, 0.34);
+  border-color: rgba(230, 126, 34, 0.65);
+}
+.fate-dice-station__badge--2d:hover {
+  background: rgba(25, 118, 210, 0.34);
+  border-color: rgba(25, 118, 210, 0.6);
+}
+
+/* 3D лоток с кубиками */
+.fate-dice-station__tray {
+  position: relative;
+  width: 100%;
+  height: 96px;
+  border-radius: 10px;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(80, 60, 38, 0.45) 0%, rgba(34, 24, 16, 0.6) 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(50, 36, 22, 0.5) 0%, transparent 50%),
+    linear-gradient(180deg, #2a2018 0%, #1a130d 100%);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.65),
+    inset 0 -1px 0 rgba(255, 200, 150, 0.08),
+    inset 0 0 0 1px rgba(255, 220, 180, 0.04);
+  overflow: hidden;
+  padding: 3px;
+}
+
+.fate-dice-station__tray-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 88px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+/* ── Жест-бросок: drag-состояния кейса ── */
+/* Когда RollToolPanel открыт — кубы "берущиеся". Лёгкая пульсация
+   акцентной рамкой приглашает игрока схватить кубы. */
+.fate-dice-station__tray--drag-ready {
+  cursor: grab;
+  outline: 2px solid var(--fate-accent);
+  outline-offset: -2px;
+  animation: fate-dice-tray-pulse 2.4s ease-in-out infinite;
+}
+
+.fate-dice-station__tray--drag-ready:active {
+  cursor: grabbing;
+}
+
+/* Когда тащат — кубы "ушли" с кейса, он становится тусклым. */
+.fate-dice-station__tray--dragging {
+  opacity: 0.35;
+  cursor: grabbing;
+  outline: 2px dashed var(--fate-accent);
+  outline-offset: -2px;
+  animation: none;
+}
+
+/* ── Drop-зона "вернуть кубы в кейс" ──
+   Когда курсор над кейсом во время drag — подсвечиваем зелёным,
+   показываем что тут кубы можно "положить обратно" (отменить бросок). */
+.fate-dice-station__tray--case-over {
+  outline: 3px solid #27ae60 !important;
+  outline-offset: -3px;
+  box-shadow:
+    inset 0 0 24px rgba(39, 174, 96, 0.35),
+    0 0 16px rgba(39, 174, 96, 0.4);
+  animation: none;
+  cursor: grabbing;
+}
+
+/* Оверлей "вернуть" — появляется по центру tray когда isCaseOver=true.
+   Полупрозрачный зелёный фон с иконкой стрелки вниз и текстом. */
+.fate-dice-station__case-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(39, 174, 96, 0.55);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  z-index: 10;
+  animation: fate-case-overlay-fade-in 0.15s ease-out;
+  pointer-events: none;
+}
+
+@keyframes fate-case-overlay-fade-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fate-dice-tray-pulse {
+  0%, 100% {
+    outline-color: rgba(230, 126, 34, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(230, 126, 34, 0.1);
+  }
+  50% {
+    outline-color: rgba(230, 126, 34, 0.9);
+    box-shadow: inset 0 0 0 1px rgba(230, 126, 34, 0.25),
+                0 0 12px rgba(230, 126, 34, 0.2);
+  }
+}
+
+/* Бейдж "тащи" в шапке DiceStation — подсказка что кубы draggable */
+.fate-dice-station__drag-hint {
+  display: inline-flex;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fate-accent);
+  background: rgba(230, 126, 34, 0.12);
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: 4px;
+  animation: fate-dice-hint-fade 2.4s ease-in-out infinite;
+}
+
+/* ── "Жду персонажа" hint for network players without assignment ──
+   Amber pulsing badge — same visual language as the drag-hint but
+   distinct color (amber instead of orange) to signal "waiting" state.
+   Shown when a network player opens the roll panel but the GM hasn't
+   assigned them a character yet. The drag is disabled in this state. */
+.fate-dice-station__wait-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.14);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: 4px;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  animation: fate-dice-hint-fade 2s ease-in-out infinite;
+}
+:root:not(.dark) .fate-dice-station__wait-hint {
+  color: #b45309;
+  background: rgba(251, 191, 36, 0.18);
+  border-color: rgba(180, 83, 9, 0.3);
+}
+
+/* ── Кнопка-палитра в шапке DiceStation ──
+   Быстрый доступ к настройке цветов кубов (Popover с DiceColorPicker).
+   На кнопке — два мини-свотча текущих цветов (тело + символ): игрок видит
+   свою палитру не открывая пикер. Кнопка компактная, не конкурирует с
+   заголовком за внимание. Hover — оранжевый акцент (как все интерактивные
+   элементы в Fate UI). */
+.fate-dice-station__palette-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 7px 3px 6px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.fate-dice-station__palette-btn:hover {
+  background: rgba(230, 126, 34, 0.18);
+  color: var(--fate-accent);
+  border-color: rgba(230, 126, 34, 0.42);
+}
+.fate-dice-station__palette-btn:active {
+  transform: scale(0.94);
+}
+.fate-dice-station__palette-btn:focus-visible {
+  outline: 2px solid var(--fate-accent);
+  outline-offset: 1px;
+}
+:root:not(.dark) .fate-dice-station__palette-btn {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.55);
+}
+:root:not(.dark) .fate-dice-station__palette-btn:hover {
+  background: rgba(230, 126, 34, 0.14);
+  color: #b95a14;
+  border-color: rgba(230, 126, 34, 0.45);
+}
+
+/* Два мини-свотча текущих цветов на кнопке-палитре.
+   Левый — тело куба, правый — символ. Тонкая inner-рамка чтобы светлые
+   цвета были видны на тёмном фоне шапки. */
+.fate-dice-station__palette-dots {
+  display: inline-flex;
+  gap: 2px;
+}
+.fate-dice-station__palette-dots > span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+/* В toolbar-варианте (главный header) свотчи чуть крупнее — рядом с
+   size-4 иконкой 8px выглядят мелко. Поднимаем до 10px + gap 2.5px. */
+.fate-toolbar-btn .fate-dice-station__palette-dots {
+  gap: 2.5px;
+  margin-left: 1px;
+}
+.fate-toolbar-btn .fate-dice-station__palette-dots > span {
+  width: 10px;
+  height: 10px;
+  border-radius: 2.5px;
+}
+
+@keyframes fate-dice-hint-fade {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ── Подсветка canvas когда над ним тащат кубы ── */
+.fate-map-canvas-wrapper--roll-target {
+  outline: 3px solid var(--fate-accent);
+  outline-offset: -3px;
+  box-shadow: inset 0 0 24px rgba(230, 126, 34, 0.25);
+}
+
+/* Анимация иконки кубиков в DragOverlay (под курсором при drag) */
+@keyframes fate-wiggle {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.fate-dice-station__glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    transparent 60%
+  );
+  border-radius: 10px;
+}
+
+/* Подпись с результатом — поверх лотка, внизу справа */
+.fate-dice-station__result {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fate-dice-station__result-sum {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.fate-dice-station__result-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.02em;
+}
+
+/* Модификатор */
+.fate-dice-station__bonus {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fate-dice-station__bonus-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 2px;
+}
+
+:root:not(.dark) .fate-dice-station__bonus-label {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.fate-dice-station__bonus-row {
+  display: flex;
+  gap: 4px;
+}
+
+.fate-dice-station__bonus-btn {
+  flex: 1;
+  min-height: 28px;
+  padding: 4px 0;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:root:not(.dark) .fate-dice-station__bonus-btn {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.fate-dice-station__bonus-btn:hover {
+  border-color: rgba(25, 118, 210, 0.4);
+  background: rgba(25, 118, 210, 0.08);
+  color: #fff;
+}
+
+:root:not(.dark) .fate-dice-station__bonus-btn:hover {
+  color: #0d47a1;
+}
+
+.fate-dice-station__bonus-btn--active {
+  border-color: rgba(25, 118, 210, 0.7);
+  background: rgba(25, 118, 210, 0.2);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(25, 118, 210, 0.3);
+}
+
+:root:not(.dark) .fate-dice-station__bonus-btn--active {
+  background: rgba(25, 118, 210, 0.12);
+  color: #0d47a1;
+  border-color: rgba(25, 118, 210, 0.6);
+}
+
+.fate-dice-station__bonus-btn--active.fate-dice-station__bonus-btn--pos {
+  border-color: rgba(39, 174, 96, 0.7);
+  background: rgba(39, 174, 96, 0.18);
+  color: #2ecc71;
+  box-shadow: 0 0 12px rgba(39, 174, 96, 0.3);
+}
+
+:root:not(.dark) .fate-dice-station__bonus-btn--active.fate-dice-station__bonus-btn--pos {
+  color: #1a9d52;
+  background: rgba(39, 174, 96, 0.1);
+}
+
+.fate-dice-station__bonus-btn--active.fate-dice-station__bonus-btn--neg {
+  border-color: rgba(231, 76, 60, 0.7);
+  background: rgba(231, 76, 60, 0.18);
+  color: #ff6b5a;
+  box-shadow: 0 0 12px rgba(231, 76, 60, 0.3);
+}
+
+:root:not(.dark) .fate-dice-station__bonus-btn--active.fate-dice-station__bonus-btn--neg {
+  color: #c0392b;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Кнопка броска */
+.fate-dice-station__roll-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 9px;
+  border: 1px solid rgba(25, 118, 210, 0.5);
+  background: linear-gradient(180deg, rgba(25, 118, 210, 0.35) 0%, rgba(13, 71, 161, 0.4) 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(25, 118, 210, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.fate-dice-station__roll-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.fate-dice-station__roll-btn:hover:not(:disabled) {
+  border-color: rgba(25, 118, 210, 0.8);
+  background: linear-gradient(180deg, rgba(25, 118, 210, 0.5) 0%, rgba(13, 71, 161, 0.55) 100%);
+  box-shadow:
+    0 4px 14px rgba(25, 118, 210, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.fate-dice-station__roll-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 4px rgba(25, 118, 210, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.fate-dice-station__roll-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fate-dice-station__offline {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(231, 76, 60, 0.3);
+  color: #ff6b5a;
+  letter-spacing: 0.04em;
+}
+
+/* ── Оранжевая пульсация для «Приглашение к броску» ──
+   Замена старой красной пульсации (fate-invite-pulse). Оранжевый =
+   «обрати внимание, но не тревожно» (приглашение, а не угроза). */
+@keyframes fate-invite-pulse-orange {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.7), 0 0 0 0 rgba(243, 156, 18, 0.4);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(230, 126, 34, 0.0), 0 0 14px 3px rgba(243, 156, 18, 0.55);
+    filter: brightness(1.12);
+  }
+}
+
+.fate-invite-pulse-orange {
+  animation: fate-invite-pulse-orange 1.1s ease-in-out infinite;
+  position: relative;
+}
+
+.fate-invite-pulse-orange::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 2px solid #f39c12;
+  opacity: 0;
+  animation: fate-invite-ring 1.1s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ── Двойные кнопки «←Назад» + «Бросить» (rollMode активен) ── */
+.fate-dice-station__dual-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 8px;
+  width: 100%;
+}
+
+/* «←Назад» — вторичная, ghost-стиль (не привлекает внимание). */
+.fate-dice-station__btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 38px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  border: 1px solid var(--fate-border);
+  background: var(--fate-bg-warm);
+  color: var(--fate-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  overflow: hidden;
+}
+.fate-dice-station__btn-back:hover:not(:disabled) {
+  border-color: var(--fate-text-muted);
+  background: color-mix(in srgb, var(--fate-bg-warm) 80%, var(--fate-text-muted) 12%);
+  color: var(--fate-text);
+  transform: translateY(-1px);
+}
+.fate-dice-station__btn-back:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* «Бросить» — первичная, акцентный градиент (оранжевый, фирменный).
+ * По умолчанию оранжевая (состояние IN-FLIGHT / SETTLED «Вернуть кубы»).
+ * Модификатор --idle перекрашивает в синий градиент (состояние IDLE «Бросить»). */
+.fate-dice-station__btn-throw {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  border: 1px solid rgba(230, 126, 34, 0.55);
+  background: linear-gradient(180deg, rgba(230, 126, 34, 0.85) 0%, rgba(211, 84, 0, 0.9) 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(230, 126, 34, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.fate-dice-station__btn-throw::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+.fate-dice-station__btn-throw:hover:not(:disabled) {
+  border-color: rgba(230, 126, 34, 0.9);
+  background: linear-gradient(180deg, rgba(230, 126, 34, 0.95) 0%, rgba(211, 84, 0, 1) 100%);
+  box-shadow:
+    0 4px 14px rgba(230, 126, 34, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+.fate-dice-station__btn-throw:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 4px rgba(230, 126, 34, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ── IDLE variant — синяя «Бросить» (кубы НЕ брошены) ──
+ *   Синий градиент (firm blue), контрастный с оранжевой «Вернуть кубы».
+ *   Когда игрок кликает → emitRandomThrowGesture → кубы летят →
+ *   кнопка реактивно становится оранжевой (модификатор --idle снимается). */
+.fate-dice-station__btn-throw--idle {
+  border-color: rgba(52, 152, 219, 0.55);
+  background: linear-gradient(180deg, rgba(52, 152, 219, 0.92) 0%, rgba(41, 128, 185, 0.95) 100%);
+  box-shadow:
+    0 2px 8px rgba(52, 152, 219, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.fate-dice-station__btn-throw--idle::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 55%);
+}
+.fate-dice-station__btn-throw--idle:hover:not(:disabled) {
+  border-color: rgba(52, 152, 219, 0.9);
+  background: linear-gradient(180deg, rgba(52, 152, 219, 1) 0%, rgba(41, 128, 185, 1) 100%);
+  box-shadow:
+    0 4px 14px rgba(52, 152, 219, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+.fate-dice-station__btn-throw--idle:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 4px rgba(52, 152, 219, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ── DISABLED variant — in-flight «Вернуть кубы» (физика летит, ждём результат) ──
+ *   Приглушённая оранжевая, сероватый оверлей, no hover, cursor: wait.
+ *   Кнопка disabled — клик ничего не делает (защита от double-click во время полёта). */
+.fate-dice-station__btn-throw--disabled,
+.fate-dice-station__btn-throw--disabled:hover,
+.fate-dice-station__btn-throw--disabled:active {
+  cursor: wait;
+  transform: none;
+  opacity: 0.78;
+  filter: saturate(0.85);
+  box-shadow:
+    0 1px 4px rgba(230, 126, 34, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.fate-dice-station__btn-throw:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ── Бейдж «на столе» — когда кубы на карте после броска ── */
+.fate-dice-station__live-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: rgba(230, 126, 34, 0.18);
+  color: var(--fate-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(230, 126, 34, 0.4);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* ── A/B ТЕСТ: пресеты броска (карточки над кнопкой) ──
+   5 карточек-кнопок с иконкой, названием и цветовым акцентом.
+   Расположены ВЫШЕ основной кнопки броска. Каждая кнопка сразу
+   запускает бросок с своим пресетом. Активная подсвечивается цветом.
+   Удали после выбора лучшего. */
+.fate-dice-station__presets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 8px 9px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+:root:not(.dark) .fate-dice-station__presets {
+  background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.025) 100%);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+.dark .fate-dice-station__presets {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.035) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.fate-dice-station__presets-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 0 2px;
+}
+.fate-dice-station__presets-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.62);
+}
+.dark .fate-dice-station__presets-title {
+  color: rgba(255, 255, 255, 0.7);
+}
+.fate-dice-station__presets-hint {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.42);
+  font-style: italic;
+}
+.dark .fate-dice-station__presets-hint {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.fate-dice-station__presets-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+/* Карточка пресета — крупная кнопка с иконкой, названием и цветовым акцентом.
+   --preset-hue задаётся инлайн-стилем из ROLL_PRESETS (HSL оттенок). */
+.fate-dice-station__preset-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px 2px 6px;
+  min-height: 50px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.78);
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+              background 0.12s ease-out, border-color 0.12s ease-out,
+              color 0.12s ease-out;
+  user-select: none;
+  overflow: hidden;
+}
+.dark .fate-dice-station__preset-card {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Цветная полоска сверху карточки — индикатор пресета (использует --preset-hue) */
+.fate-dice-station__preset-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: hsl(var(--preset-hue, 210) 65% 50%);
+  opacity: 0.85;
+  transition: opacity 0.12s ease-out, height 0.12s ease-out;
+}
+
+.fate-dice-station__preset-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: hsl(var(--preset-hue, 210) 65% 95%);
+  color: hsl(var(--preset-hue, 210) 70% 38%);
+  transition: background 0.12s ease-out, color 0.12s ease-out, transform 0.12s ease-out;
+}
+.dark .fate-dice-station__preset-icon {
+  background: hsl(var(--preset-hue, 210) 45% 22%);
+  color: hsl(var(--preset-hue, 210) 65% 72%);
+}
+
+.fate-dice-station__preset-name {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Активная точка-индикатор в углу карточки */
+.fate-dice-station__preset-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--preset-hue, 210) 70% 45%);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 0 4px hsl(var(--preset-hue, 210) 70% 45%);
+}
+.dark .fate-dice-station__preset-dot {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4), 0 0 4px hsl(var(--preset-hue, 210) 70% 55%);
+}
+
+.fate-dice-station__preset-card:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: hsl(var(--preset-hue, 210) 60% 55%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12),
+              0 0 0 1px hsla(var(--preset-hue, 210), 60%, 55%, 0.25);
+  background: rgba(255, 255, 255, 0.98);
+}
+.dark .fate-dice-station__preset-card:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35),
+              0 0 0 1px hsla(var(--preset-hue, 210), 65%, 60%, 0.35);
+}
+.fate-dice-station__preset-card:hover:not(:disabled)::before {
+  height: 4px;
+  opacity: 1;
+}
+.fate-dice-station__preset-card:hover:not(:disabled) .fate-dice-station__preset-icon {
+  transform: scale(1.12);
+}
+
+.fate-dice-station__preset-card--active {
+  background: linear-gradient(180deg,
+              hsla(var(--preset-hue, 210), 70%, 96%, 0.95) 0%,
+              hsla(var(--preset-hue, 210), 60%, 92%, 0.95) 100%);
+  border-color: hsl(var(--preset-hue, 210) 65% 50%);
+  color: hsl(var(--preset-hue, 210) 70% 28%);
+  box-shadow:
+    0 2px 8px hsla(var(--preset-hue, 210), 65%, 50%, 0.25),
+    inset 0 0 0 1px hsla(var(--preset-hue, 210), 65%, 50%, 0.2);
+}
+.dark .fate-dice-station__preset-card--active {
+  background: linear-gradient(180deg,
+              hsla(var(--preset-hue, 210), 45%, 28%, 0.95) 0%,
+              hsla(var(--preset-hue, 210), 40%, 22%, 0.95) 100%);
+  border-color: hsl(var(--preset-hue, 210) 65% 60%);
+  color: hsl(var(--preset-hue, 210) 65% 85%);
+  box-shadow:
+    0 2px 10px hsla(var(--preset-hue, 210), 65%, 50%, 0.4),
+    inset 0 0 0 1px hsla(var(--preset-hue, 210), 65%, 60%, 0.3);
+}
+.fate-dice-station__preset-card--active::before {
+  height: 4px;
+  opacity: 1;
+}
+.fate-dice-station__preset-card--active .fate-dice-station__preset-icon {
+  background: hsl(var(--preset-hue, 210) 70% 50%);
+  color: #fff;
+}
+.dark .fate-dice-station__preset-card--active .fate-dice-station__preset-icon {
+  background: hsl(var(--preset-hue, 210) 65% 55%);
+  color: #fff;
+}
+
+.fate-dice-station__preset-card:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.fate-dice-station__presets-desc {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  min-height: 13px;
+  padding: 0 4px;
+  transition: color 0.12s ease-out;
+}
+.dark .fate-dice-station__presets-desc {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Удаляем старые правила маленьких кнопок-пресетов (заменены карточками) */
+
+/* trigger recompile */
+
+/* ── 2D Dice Canvas ──────────────────────────────────────────── */
+.fate-dice-2d-canvas {
+  pointer-events: none;
+}
+.fate-dice-2d-tile {
+  opacity: 0;  /* начальное состояние; renderTiles управляет через inline style */
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  /* Сглаживание трансформаций — плитки двигаются плавно. */
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ── Статичные 2D-плитки в кейсе DiceStation ────────────────────
+   Заменяют DiceCase3D (WebGL-анимацию). 4 кубика в ряд, тот же
+   синий градиент что и у live 2D-кубиков и 3D-кубиков. Без анимации —
+   просто показывают последний результат. */
+.fate-dice-station__case-tiles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+/* ── 3D-контейнер для DiceCase3D (WebGL-сцена) ──────────────────
+   Рендерится только в 3D-режиме. Canvas заполняет весь tray-inner. */
+.fate-dice-station__case-3d {
+  position: absolute;
+  inset: 0;
+  /* pointer-events: none на Canvas внутри DiceCase3D — кубы не
+     перехватывают drag (drag слушает tray через dnd-kit listeners). */
+}
+
+.fate-dice-station__case-tile {
+  position: relative;
+  flex: 1 1 0;
+  aspect-ratio: 1 / 1;
+  max-height: 78px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 10, 40, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 3px 8px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.fate-dice-station__case-tile--fading {
+  opacity: 0.35;
+  transform: scale(0.92);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.fate-dice-station__case-tile-vignette {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.fate-dice-station__case-tile-symbol {
+  position: absolute;
+  inset: 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* SVG внутри идеально центрирован своим viewBox. padding/inset
+     дают отступ от края плитки, чтобы символ не прилипал к рамке. */
+}
